@@ -1,4 +1,3 @@
-/* Import Google Fonts and define custom font */
 @import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@300;400;700&display=swap');
 
 @font-face {
@@ -15,19 +14,17 @@
     font-style: normal;
 }
 
-/* Define color variables for the theme */
 :root {
     --pyke-red: #A31C2D;
     --pyke-gold: #FFD700;
     --text-light: #E0E0E0;
     --text-dim: #A0A0A0;
-    --red-dark: #1c0c0e; /* Darker red for backgrounds */
-    --red-medium-rgb: 74, 23, 29; /* RGB values for transparency */
-    --red-medium: #4A171D; /* Medium red for cards/elements */
-    --red-accent: #8B0000; /* Strong red accent */
+    --red-dark: #1c0c0e;
+    --red-medium-rgb: 74, 23, 29;
+    --red-medium: #4A171D;
+    --red-accent: #8B0000;
 }
 
-/* General Body Styling */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.7;
@@ -42,7 +39,38 @@ body {
     overflow-x: hidden;
 }
 
-/* Loading Screen Styling */
+.mobile-not-supported-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-image: url('media/PykeSad.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    text-align: center;
+}
+
+.mobile-not-supported-message .message-content {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: var(--pyke-gold);
+    font-family: 'FiddlersCove', 'Pirata One', cursive;
+    font-size: 2.5em;
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 3px solid var(--pyke-red);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    text-shadow: 2px 2px 8px #000;
+    max-width: 90%;
+    line-height: 1.3;
+}
+
 .loading-screen {
     position: fixed;
     top: 0;
@@ -91,7 +119,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* --- New Role Selection Styles --- */
 #selection-container {
     position: fixed;
     top: 0;
@@ -113,7 +140,7 @@ body {
     background-size: cover;
     background-position: center;
     transition: opacity 0.5s ease-out;
-    opacity: 0; /* Initially hidden */
+    opacity: 0;
     padding: 20px;
 }
 
@@ -122,7 +149,7 @@ body {
 }
 
 #user-role-screen {
-    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundPykeRoleChoose.jpg');
+    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundWhatRoleAreYou.jpg');
 }
 
 .selection-box {
@@ -168,7 +195,6 @@ body {
     border: none;
     padding: 0;
     margin: 0 10px;
-    cursor: pointer;
     outline: none;
     transition: filter 0.2s;
 }
@@ -207,32 +233,70 @@ body {
     background-size: cover !important;
 }
 
-/* Guide content font */
 .guide-font {
     font-family: 'PiratesBay', 'Pirata One', cursive !important;
 }
 
-body.loading-active .controls,
-body.role-select-active .controls {
-    display: flex !important;
+body.loading-active .music-player-wrapper,
+body.role-select-active .music-player-wrapper {
+    display: none !important;
 }
 
-/* Lock controls to top right */
-.controls {
+.music-player-wrapper {
     position: fixed;
     top: 20px;
     right: 20px;
+    z-index: 1001;
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.toggle-music-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--pyke-gold);
+    color: var(--pyke-gold);
+    font-size: 1.2em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.toggle-music-button:hover {
+    background-color: var(--pyke-red);
+    color: white;
+    transform: scale(1.05);
+}
+
+#music-controls {
+    display: flex;
+    flex-direction: column;
     gap: 15px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 15px;
-    border-radius: 50px;
-    z-index: 1001;
-    flex-wrap: wrap;
+    border-radius: 15px;
+    max-height: 300px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out, border-radius 0.5s ease-out;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    max-width: 250px;
+    align-items: stretch;
 }
 
-/* Music Controls */
+#music-controls.music-controls-collapsed {
+    max-height: 0;
+    padding: 0 15px;
+    border-radius: 50px;
+    border: none;
+}
+
 .mute-button {
     background: none;
     border: none;
@@ -246,10 +310,15 @@ body.role-select-active .controls {
     color: var(--pyke-gold);
 }
 
+.volume-slider-container {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 #volume-slider {
     -webkit-appearance: none;
     appearance: none;
-    width: 100px;
+    width: 100%;
     height: 5px;
     background: var(--text-dim);
     outline: none;
@@ -274,7 +343,6 @@ body.role-select-active .controls {
     border-radius: 50%;
 }
 
-/* Lyrics button */
 .lyrics-button {
     background: none;
     border: none;
@@ -293,7 +361,6 @@ body.role-select-active .controls {
     color: var(--pyke-red);
 }
 
-/* Lyrics Modal */
 .lyrics-modal {
     position: fixed;
     top: 0; left: 0;
@@ -334,7 +401,6 @@ body.role-select-active .controls {
     font-family: 'Roboto', monospace;
 }
 
-/* Role image button styling */
 .role-btn {
     background: transparent;
     border: none;
@@ -349,6 +415,11 @@ body.role-select-active .controls {
     filter: grayscale(100%) brightness(0.7);
     cursor: not-allowed;
 }
+.role-btn.disabled-by-selection {
+    filter: grayscale(100%) brightness(0.7);
+    cursor: not-allowed;
+}
+
 .role-img {
     width: 64px;
     height: 64px;
@@ -356,7 +427,6 @@ body.role-select-active .controls {
     pointer-events: none;
 }
 
-/* Selection box and question */
 .selection-box {
     background-color: rgba(0, 0, 0, 0.75);
     padding: 40px;
@@ -382,7 +452,6 @@ body.role-select-active .controls {
     justify-content: center;
 }
 
-/* Main content container */
 .container {
     max-width: 900px;
     margin: 40px auto;
@@ -398,7 +467,6 @@ body.role-select-active .controls {
     box-sizing: border-box;
 }
 
-/* Guide section */
 .guide-section {
     background-color: rgba(74, 23, 29, 0.65);
     margin-bottom: 30px;
@@ -421,7 +489,6 @@ body.role-select-active .controls {
     text-shadow: 1px 1px 4px #000;
 }
 
-/* Guide section font and sizing for all sections (reduce size) */
 .guide-section.guide-font,
 .guide-section ul,
 .guide-section li,
@@ -439,7 +506,6 @@ body.role-select-active .controls {
     line-height: 1.4;
 }
 
-/* List styling */
 ul {
     list-style: none;
     padding-left: 20px;
@@ -472,6 +538,13 @@ header {
     border-bottom: 3px solid var(--red-accent);
     opacity: 0;
     transition: opacity 0.5s ease-in;
+    background-image: url('media/pykeSwag.jpg'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.3); 
+    border-radius: 15px; 
+    overflow: hidden;
 }
 header h1 {
     font-family: 'FiddlersCove', 'Pirata One', cursive;
@@ -480,18 +553,24 @@ header h1 {
     text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     margin: 0;
 }
+
 footer {
-    padding: 20px;
-    background-color: var(--red-medium);
-    color: var(--text-dim);
     text-align: center;
+    padding: 25px 20px;
+    color: var(--text-dim);
     font-size: 0.9em;
-    border-top: 3px solid var(--red-accent);
-    width: 100%;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(74, 23, 29, 0.5);
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
     opacity: 0;
     transition: opacity 0.5s ease-in;
 }
+footer p {
+    margin: 0;
+    line-height: 1.5;
+}
+
 
 .loading-bg {
     background: url('media/loadingBackground.jpg') no-repeat center center fixed !important;
@@ -505,7 +584,6 @@ footer {
     transition: opacity 0.5s ease-in;
 }
 
-/* Add styling for role label text in buttons */
 .role-label {
     display: block;
     margin-top: 6px;
@@ -517,7 +595,6 @@ footer {
     text-align: center;
 }
 
-/* Champion image in optimal picks list */
 #optimal-picks-list img {
     width: 32px;
     height: 32px;
@@ -528,8 +605,14 @@ footer {
     background: #222;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
+    #desktop-content-wrapper {
+        display: none;
+    }
+    .mobile-not-supported-message {
+        display: flex;
+    }
+
     .selection-box {
         padding: 20px;
         width: 90%;
@@ -554,11 +637,24 @@ footer {
     .guide-section h2 {
         font-size: 1.8em;
     }
-    .controls {
-        flex-direction: column;
-        top: 10px;
-        right: 10px;
-        gap: 10px;
+.music-player-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+    .toggle-music-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+    #music-controls {
+        max-width: 200px;
+        align-items: stretch;
     }
 }
 
@@ -571,10 +667,12 @@ footer {
     .guide-section {
         padding: 4vw 2vw;
     }
-    .controls {
+    .music-player-wrapper {
         top: 10px;
         right: 10px;
         gap: 8px;
+    }
+    #music-controls {
         padding: 8px 8px;
     }
 }
@@ -590,30 +688,31 @@ footer {
         padding: 5vw 2vw;
         margin-bottom: 18px;
     }
-    .controls {
+    .music-player-wrapper {
         flex-direction: column;
         align-items: flex-end;
         top: 5px;
         right: 5px;
         gap: 6px;
+    }
+    #music-controls {
         padding: 6px 6px;
         border-radius: 20px;
+        max-width: 180px;
+        align-items: stretch;
     }
     .lyrics-button {
         font-size: 1em;
         padding: 6px 10px;
     }
     .volume-slider-container {
-        min-width: 60px;
-        max-width: 100px;
-        width: 40vw;
+        width: 100%;
     }
     header h1 {
         font-size: 2em;
     }
 }
 
-/* Make images and buttons scale well */
 .role-img {
     width: min(64px, 12vw);
     height: min(64px, 12vw);
