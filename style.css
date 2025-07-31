@@ -1,30 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@300;400;700&display=swap');
 
+/* --- CUSTOM FONTS --- */
 @font-face {
     font-family: 'FiddlersCove';
     src: url('https://storage.googleapis.com/gemini-web-resources/fiddler.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
 }
-
 @font-face {
     font-family: 'PiratesBay';
     src: url('https://storage.googleapis.com/gemini-web-resources/PiratesBay.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
 }
 
+/* --- COLOR & THEME VARIABLES --- */
 :root {
     --pyke-red: #A31C2D;
     --pyke-gold: #FFD700;
     --text-light: #E0E0E0;
     --text-dim: #A0A0A0;
     --red-dark: #1c0c0e;
-    --red-medium-rgb: 74, 23, 29;
     --red-medium: #4A171D;
     --red-accent: #8B0000;
+    --pyke-blue-glow: #00BFFF;
+    --eye-color: #3d0000; /* Default eye color */
 }
 
+/* --- BASE & BODY STYLES --- */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.7;
@@ -37,691 +36,267 @@ body {
     background-position: center;
     background-attachment: fixed;
     overflow-x: hidden;
+    position: relative; 
 }
 
-.mobile-not-supported-message {
-    display: none;
+/* --- ATMOSPHERIC EFFECTS --- */
+body::before {
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
-    background-image: url('media/PykeSad.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(11,22,33,0) 0%, rgba(0,0,0,0.9) 100%);
+    z-index: 0;
+    pointer-events: none;
 }
-
-.mobile-not-supported-message .message-content {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: var(--pyke-gold);
-    font-family: 'FiddlersCove', 'Pirata One', cursive;
-    font-size: 2.5em;
-    padding: 30px 40px;
-    border-radius: 15px;
-    border: 3px solid var(--pyke-red);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-    text-shadow: 2px 2px 8px #000;
-    max-width: 90%;
-    line-height: 1.3;
-}
-
-.loading-screen {
+body::after {
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/loadingBackground.jpg');
+    background-image: url("https://storage.googleapis.com/gemini-web-resources/pyke-guide/caustics.png");
     background-size: cover;
-    background-position: center;
-    transition: opacity 0.5s ease-out;
+    opacity: 0.05;
+    animation: caustics-animation 30s linear infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes caustics-animation {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1.1) rotate(5deg); }
 }
 
-.loading-content {
-    text-align: center;
-}
-
-.loading-text {
-    font-size: 2.2em;
-    color: var(--pyke-gold);
-    margin-bottom: 25px;
-    font-family: 'FiddlersCove', 'Pirata One', cursive;
-    text-shadow: 2px 2px 8px #000;
-    background-color: rgba(0, 0, 0, 0.65);
-    padding: 15px 25px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-top: 5px solid var(--pyke-gold);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#selection-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 900;
-    transition: opacity 0.5s ease-out;
-}
-
-.role-screen {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    transition: opacity 0.5s ease-out;
-    opacity: 0;
-    padding: 20px;
-}
-
-#pyke-role-screen {
-    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundWhatRoleIsPyke.jpg');
-}
-
-#user-role-screen {
-    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundWhatRoleAreYou.jpg');
-}
-
-.selection-box {
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 40px;
-    border-radius: 15px;
-    border: 2px solid var(--red-accent);
-    box-shadow: 0 0 30px rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
-    text-align: center;
-}
-
-.selection-question {
-    font-size: 3em;
-    color: var(--pyke-gold);
-    margin-top: 0;
-    margin-bottom: 40px;
-    font-family: 'FiddlersCove', 'Pirata One', cursive;
-    text-shadow: 3px 3px 10px #000, -2px -2px 5px #000;
-    text-align: center;
-}
-
-.role-buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.role-btn {
-    font-family: 'FiddlersCove', 'Pirata One', cursive;
-    font-size: 1.8em;
-    color: var(--text-light);
-    background-color: var(--red-medium);
-    border: 2px solid var(--pyke-red);
-    padding: 15px 30px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 3px #000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(139,0,0,0.5);
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0 10px;
-    outline: none;
-    transition: filter 0.2s;
-}
-
-.role-btn:hover:not(:disabled) {
-    background-color: var(--pyke-red);
-    color: var(--pyke-gold);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.7), inset 0 0 15px rgba(255,215,0,0.3);
-}
-
-.role-btn:disabled {
-    background-color: #3a3a3a;
-    border-color: #222;
-    color: #777;
-    cursor: not-allowed;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-    transform: none;
-}
-
-.role-btn.jungle-disabled {
-    filter: grayscale(100%) brightness(0.7);
-    cursor: not-allowed;
-}
-
-.pyke-role-bg {
-    background: url('media/backgroundWhatRoleIsPyke.jpg') no-repeat center center fixed !important;
-    background-size: cover !important;
-}
-.user-role-bg {
-    background: url('media/backgroundWhatRoleAreYou.jpg') no-repeat center center fixed !important;
-    background-size: cover !important;
-}
-.guide-bg {
-    background: url('media/background.jpg') no-repeat center center fixed !important;
-    background-size: cover !important;
-}
-
-.guide-font {
-    font-family: 'PiratesBay', 'Pirata One', cursive !important;
-}
-
-body.loading-active .music-player-wrapper,
-body.role-select-active .music-player-wrapper {
-    display: none !important;
-}
-
-.music-player-wrapper {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-}
-
-.toggle-music-button {
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--pyke-gold);
-    color: var(--pyke-gold);
-    font-size: 1.2em;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-}
-
-.toggle-music-button:hover {
-    background-color: var(--pyke-red);
-    color: white;
-    transform: scale(1.05);
-}
-
-#music-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 15px;
-    border-radius: 15px;
-    max-height: 300px;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out, padding 0.5s ease-out, border-radius 0.5s ease-out;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    max-width: 250px;
-    align-items: stretch;
-}
-
-#music-controls.music-controls-collapsed {
-    max-height: 0;
-    padding: 0 15px;
-    border-radius: 50px;
-    border: none;
-}
-
-.mute-button {
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.mute-button:hover {
-    color: var(--pyke-gold);
-}
-
-.volume-slider-container {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#volume-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 5px;
-    background: var(--text-dim);
-    outline: none;
-    border-radius: 5px;
-}
-
-#volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: var(--pyke-gold);
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-#volume-slider::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    background: var(--pyke-gold);
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.lyrics-button {
-    background: none;
-    border: none;
-    color: var(--pyke-gold);
-    font-size: 1em;
-    cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: background 0.2s, color 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.lyrics-button:hover {
-    background: rgba(255, 215, 0, 0.1);
-    color: var(--pyke-red);
-}
-
-.lyrics-modal {
+#dark-sea-movement, #ghost-fish-container {
     position: fixed;
     top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-}
-.lyrics-content {
-    background: #222;
-    color: var(--pyke-gold);
-    padding: 32px 24px;
-    border-radius: 16px;
-    max-width: 600px;
-    width: 90vw;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 0 40px #000;
-    font-family: 'PiratesBay', 'Pirata One', cursive;
-}
-.close-lyrics {
-    position: absolute;
-    top: 12px; right: 18px;
-    background: none;
-    border: none;
-    color: var(--pyke-gold);
-    font-size: 2em;
-    cursor: pointer;
-}
-.lyrics-text {
-    white-space: pre-wrap;
-    font-size: 1em;
-    color: var(--text-light);
-    margin-top: 16px;
-    font-family: 'Roboto', monospace;
-}
-
-.role-btn {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0 10px;
-    cursor: pointer;
-    outline: none;
-    transition: filter 0.2s;
-}
-.role-btn:disabled,
-.role-btn.jungle-disabled {
-    filter: grayscale(100%) brightness(0.7);
-    cursor: not-allowed;
-}
-.role-btn.disabled-by-selection {
-    filter: grayscale(100%) brightness(0.7);
-    cursor: not-allowed;
-}
-
-.role-img {
-    width: 64px;
-    height: 64px;
-    display: block;
+    width: 100%; height: 100%;
     pointer-events: none;
-}
-
-.selection-box {
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 40px;
-    border-radius: 15px;
-    border: 2px solid var(--red-accent);
-    box-shadow: 0 0 30px rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
-    text-align: center;
-}
-.selection-question {
-    font-size: 3em;
-    color: var(--pyke-gold);
-    margin-top: 0;
-    margin-bottom: 40px;
-    font-family: 'FiddlersCove', 'Pirata One', cursive;
-    text-shadow: 3px 3px 10px #000, -2px -2px 5px #000;
-    text-align: center;
-}
-.role-buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: rgba(10, 10, 10, 0.15);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    border: 2px solid var(--red-accent);
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
-    width: 95vw;
-    box-sizing: border-box;
-}
-
-.guide-section {
-    background-color: rgba(74, 23, 29, 0.65);
-    margin-bottom: 30px;
-    padding: 2vw 2vw;
-    border-radius: 10px;
-    border: 1px solid var(--red-accent);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    word-break: break-word;
-}
-.guide-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.6);
-}
-.guide-section h2 {
-    font-family: 'FiddlersCove', 'Pirata One', cursive !important;
-    font-size: clamp(2em, 5vw, 3em) !important;
-    color: var(--pyke-gold);
-    margin: 0 0 15px 0;
-    text-shadow: 1px 1px 4px #000;
-}
-
-.guide-section.guide-font,
-.guide-section ul,
-.guide-section li,
-.guide-section p {
-    font-family: 'PiratesBay', 'Pirata One', cursive !important;
-    font-size: clamp(1em, 2.5vw, 1.25em) !important;
-}
-
-.guide-section,
-.guide-section h2,
-.guide-section p,
-.guide-section ul,
-.guide-section li {
-    text-shadow: 1px 1px 4px #000, 0 0 2px #000;
-    line-height: 1.4;
-}
-
-ul {
-    list-style: none;
-    padding-left: 20px;
-    margin: 0;
-    word-break: break-word;
-}
-li {
-    font-family: 'PiratesBay';
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-    font-size: 1.1em;
-    word-break: break-word;
-}
-li::before {
-    content: '\f105';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    left: 0;
-    top: 2px;
-    color: var(--pyke-gold);
-    font-size: 1.2em;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 20px;
-    border-bottom: 3px solid var(--red-accent);
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
-    background-image: url('media/pykeSwag.jpg'); 
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0.3); 
-    border-radius: 15px; 
+    z-index: 1;
     overflow: hidden;
 }
-header h1 {
-    font-family: 'FiddlersCove', 'Pirata One', cursive;
-    font-size: 3.5em;
-    color: var(--pyke-red);
-    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    margin: 0;
+.sea-shadow {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(5, 2, 2, 0.2) 0%, rgba(5, 2, 2, 0) 70%);
+    animation: move-shadow 25s ease-in-out infinite alternate;
+}
+#shadow-1 { top: -50%; left: -50%; width: 200%; height: 200%; }
+#shadow-2 { bottom: -50%; right: -50%; width: 150%; height: 150%; animation-direction: alternate-reverse; animation-duration: 30s; }
+
+@keyframes move-shadow {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    100% { transform: translate(10%, 5%) scale(1.1); opacity: 0.8; }
 }
 
-footer {
-    text-align: center;
-    padding: 25px 20px;
-    color: var(--text-dim);
-    font-size: 0.9em;
-    border-top: 1px solid rgba(74, 23, 29, 0.5);
-    margin-top: 50px;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(3px);
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
+.ghost-fish {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    background: radial-gradient(ellipse at center, rgba(5,2,2,0.8) 0%, rgba(5,2,2,0) 70%);
+    opacity: 0.2;
+    filter: blur(10px);
+    border-radius: 50%;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
-footer p {
-    margin: 0;
-    line-height: 1.5;
+@keyframes swim-right {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(calc(100vw + 200px)) translateY(50px); }
+    100% { transform: translateX(0) translateY(0); }
 }
-
-
-.loading-bg {
-    background: url('media/loadingBackground.jpg') no-repeat center center fixed !important;
-    background-size: cover !important;
-}
-
-#main-header,
-#guide-content,
-#main-footer {
-    opacity: 1 !important;
-    transition: opacity 0.5s ease-in;
+@keyframes swim-left {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(calc(-100vw - 200px)) translateY(-50px); }
+    100% { transform: translateX(0) translateY(0); }
 }
 
-.role-label {
-    display: block;
-    margin-top: 6px;
-    font-size: 1em;
-    color: var(--pyke-gold);
-    font-family: 'PiratesBay', 'Pirata One', cursive;
-    text-shadow: 1px 1px 4px #000;
-    letter-spacing: 1px;
-    text-align: center;
-}
-
-#optimal-picks-list img {
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-    margin-right: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px #000;
-    background: #222;
-}
-
-@media (max-width: 768px) {
-    #desktop-content-wrapper {
-        display: none;
-    }
-    .mobile-not-supported-message {
-        display: flex;
-    }
-
-    .selection-box {
-        padding: 20px;
-        width: 90%;
-    }
-    .selection-question {
-        font-size: 2em;
-    }
-    .role-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-    header h1 {
-        font-size: 2.5em;
-    }
-    .container {
-        margin: 20px auto;
-        padding: 15px;
-    }
-    .guide-section {
-        padding: 20px;
-    }
-    .guide-section h2 {
-        font-size: 1.8em;
-    }
-.music-player-wrapper {
+#fog-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-}
-    .toggle-music-button {
-        width: 35px;
-        height: 35px;
-        font-size: 1em;
-    }
-    #music-controls {
-        max-width: 200px;
-        align-items: stretch;
-    }
-}
-
-@media (max-width: 900px) {
-    .container {
-        max-width: 98vw;
-        margin: 10px auto;
-        padding: 10px;
-    }
-    .guide-section {
-        padding: 4vw 2vw;
-    }
-    .music-player-wrapper {
-        top: 10px;
-        right: 10px;
-        gap: 8px;
-    }
-    #music-controls {
-        padding: 8px 8px;
-    }
-}
-
-@media (max-width: 600px) {
-    .container {
-        max-width: 100vw;
-        margin: 0;
-        padding: 2vw;
-        border-radius: 0;
-    }
-    .guide-section {
-        padding: 5vw 2vw;
-        margin-bottom: 18px;
-    }
-    .music-player-wrapper {
-        flex-direction: column;
-        align-items: flex-end;
-        top: 5px;
-        right: 5px;
-        gap: 6px;
-    }
-    #music-controls {
-        padding: 6px 6px;
-        border-radius: 20px;
-        max-width: 180px;
-        align-items: stretch;
-    }
-    .lyrics-button {
-        font-size: 1em;
-        padding: 6px 10px;
-    }
-    .volume-slider-container {
-        width: 100%;
-    }
-    header h1 {
-        font-size: 2em;
-    }
-}
-
-.role-img {
-    width: min(64px, 12vw);
-    height: min(64px, 12vw);
-    display: block;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+.fog {
+    position: absolute;
+    width: 300%; height: 100%;
+    background-repeat: repeat-x;
+    opacity: 0;
+    animation-name: fog-animation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#fog-1 { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/fog-1.png'); background-size: contain; animation-duration: 120s; opacity: 0.3; }
+#fog-2 { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/fog-2.png'); background-size: contain; animation-duration: 90s; animation-direction: reverse; opacity: 0.35; }
+#fog-3 { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/fog-1.png'); background-size: cover; animation-duration: 70s; opacity: 0.4; }
+#fog-4 { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/fog-2.png'); background-size: cover; animation-duration: 50s; animation-direction: reverse; opacity: 0.45; }
+#fog-5 { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/fog-1.png'); background-size: contain; animation-duration: 200s; opacity: 0.25; }
+@keyframes fog-animation {
+    from { transform: translateX(-66.66%); }
+    to { transform: translateX(0); }
 }
 
-.role-btn {
-    font-size: clamp(1em, 3vw, 1.8em);
-    margin: 0 6px;
-    padding: 0;
+#bubbles-container {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1; 
+    overflow: hidden;
+}
+.bubble {
+    position: absolute;
+    bottom: -30px;
+    background-color: rgba(0, 191, 255, 0.4);
+    border-radius: 50%;
+    animation: bubble-rise linear infinite;
+    box-shadow: 0 0 8px var(--pyke-blue-glow), inset 0 0 5px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 191, 255, 0.7);
+}
+@keyframes bubble-rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    50% { transform: translateY(-50vh) translateX(30px) scale(1.1); }
+    100% { transform: translateY(-110vh) translateX(-30px) scale(0.9); opacity: 0; }
+}
+
+#eyes-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 12;
+}
+.eye-pair {
+    position: absolute;
+    width: 60px; height: 20px;
+    opacity: 0;
+}
+.eye-pair::before, .eye-pair::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 15px; height: 15px;
+    background-color: var(--eye-color);
+    border-radius: 50%;
+    box-shadow: 0 0 15px 5px var(--eye-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.eye-pair::before { left: 0; }
+.eye-pair::after { right: 0; }
+@keyframes fade-in-out {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    10%, 90% { opacity: 1; transform: scale(1); }
+}
+
+#error-popups-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1002;
+}
+.error-box {
+    position: absolute;
+    width: 300px;
+    background: #f0f0f0;
+    border: 1px solid #a0a0a0;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    font-family: 'Tahoma', sans-serif;
+    color: #000;
+    border-radius: 3px;
+    animation: fade-in-out 0.5s ease-out;
+    pointer-events: all;
+    transition: opacity 0.3s ease;
+}
+.error-title-bar { background: linear-gradient(to bottom, #eff5ff, #dbe8f9); padding: 3px 5px; font-weight: bold; font-size: 13px; border-bottom: 1px solid #a0a0a0; display: flex; justify-content: space-between; align-items: center; }
+.error-close-btn { background: #e81123; color: white; border: 1px solid #ad1111; border-radius: 2px; width: 20px; height: 20px; line-height: 18px; text-align: center; cursor: pointer; font-size: 16px; }
+.error-content { padding: 20px; display: flex; align-items: center; gap: 15px; }
+.error-icon { font-size: 30px; font-weight: bold; color: #f7b731; background: #f7b73133; border-radius: 50%; width: 40px; height: 40px; text-align: center; line-height: 40px; }
+.error-buttons { background: #f0f0f0; padding: 10px; text-align: center; border-top: 1px solid #ddd; }
+.error-buttons button { min-width: 80px; padding: 5px 15px; margin: 0 5px; border: 1px solid #a0a0a0; background: #e1e1e1; cursor: pointer; }
+
+/* --- PRE-GUIDE SCREENS --- */
+.mobile-not-supported-message { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000 url('media/PykeSad.jpg') no-repeat center center; background-size: cover; justify-content: center; align-items: center; z-index: 9999; text-align: center; }
+.mobile-not-supported-message .message-content { background-color: rgba(0, 0, 0, 0.85); color: var(--pyke-gold); font-family: 'FiddlersCove', 'Pirata One', cursive; font-size: 2.5em; padding: 30px 40px; border-radius: 15px; border: 3px solid var(--pyke-red); box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); text-shadow: 2px 2px 8px #000; max-width: 90%; line-height: 1.3; }
+.loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000 url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/loadingBackground.jpg') no-repeat center center; background-size: cover; display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.5s ease-out; }
+.loading-content { text-align: center; }
+.loading-text { font-size: 2.2em; color: var(--pyke-gold); margin-bottom: 25px; font-family: 'FiddlersCove', 'Pirata One', cursive; text-shadow: 2px 2px 8px #000; background-color: rgba(0, 0, 0, 0.65); padding: 15px 25px; border-radius: 10px; border: 1px solid rgba(255, 215, 0, 0.3); }
+.spinner { width: 60px; height: 60px; border: 5px solid rgba(255, 255, 255, 0.3); border-top: 5px solid var(--pyke-gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+#selection-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 900; transition: opacity 0.5s ease-out; }
+.role-screen { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; transition: opacity 0.5s ease-out; opacity: 0; padding: 20px; }
+#pyke-role-screen { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundWhatRoleIsPyke.jpg'); }
+#user-role-screen { background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundWhatRoleAreYou.jpg'); }
+.selection-box { background-color: rgba(0, 0, 0, 0.75); padding: 40px; border-radius: 15px; border: 2px solid var(--red-accent); box-shadow: 0 0 30px rgba(0,0,0,0.8); backdrop-filter: blur(5px); text-align: center; }
+.selection-question { font-size: 3em; color: var(--pyke-gold); margin: 0 0 40px 0; font-family: 'FiddlersCove', 'Pirata One', cursive; text-shadow: 3px 3px 10px #000, -2px -2px 5px #000; }
+.role-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.role-btn { font-family: 'FiddlersCove', 'Pirata One', cursive; font-size: 1.8em; color: var(--text-light); background: transparent; border: none; padding: 0; margin: 0 10px; cursor: pointer; transition: all 0.3s ease; }
+.role-btn:hover:not(:disabled) { transform: translateY(-5px) scale(1.05); }
+.role-btn:hover:not(:disabled) .role-label { color: var(--pyke-red); }
+.role-btn:disabled { filter: grayscale(100%) brightness(0.7); cursor: not-allowed; transform: none; }
+.role-label { color: var(--pyke-gold); text-shadow: 1px 1px 4px #000; }
+
+/* --- FLOATING UI CONTROLS --- */
+.ui-wrapper { position: fixed; top: 20px; right: 20px; z-index: 1001; display: flex; flex-direction: column; align-items: flex-end; }
+body:not(.guide-active) .ui-wrapper { display: none; }
+.top-buttons { display: flex; gap: 10px; margin-bottom: 10px; background-color: rgba(10, 10, 10, 0.75); padding: 10px; border-radius: 15px; border: 2px solid var(--red-accent); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); }
+#toggle-music-controls-button, #back-role-selection, #toggle-info-button, #toggle-feedback-button, #donation-button { background-color: rgba(10, 10, 10, 0.7); border: 2px solid var(--pyke-red); color: var(--pyke-gold); font-size: 1.2em; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); transition: all 0.3s ease; text-decoration: none; }
+#toggle-music-controls-button:hover, #back-role-selection:hover, #toggle-info-button:hover, #toggle-feedback-button:hover, #donation-button:hover { background-color: var(--pyke-red); color: white; transform: scale(1.05); box-shadow: 0 0 20px rgba(139, 0, 0, 0.8); }
+
+#music-controls, #info-box, #feedback-box { display: flex; flex-direction: column; gap: 15px; background-color: rgba(10, 10, 10, 0.75); padding: 20px; border-radius: 15px; max-height: 500px; overflow: hidden; transition: all 0.5s ease-out; border: 2px solid var(--red-accent); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); width: 340px; box-sizing: border-box; margin-top: 10px; }
+#music-controls.music-controls-collapsed, #info-box.info-box-collapsed, #feedback-box.feedback-box-collapsed { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; border-width: 0; margin-top: 0; }
+#info-box h2 { font-family: 'FiddlersCove', 'Pirata One', cursive !important; font-size: clamp(2em, 4vw, 2.5em) !important; color: var(--pyke-gold); margin: 0 0 10px 0; text-shadow: 1px 1px 4px #000; text-align: center; }
+#info-box ul { padding: 0; margin: 0; list-style: none; }
+#info-box li { font-family: 'PiratesBay', 'Pirata One', cursive !important; font-size: 1.4em !important; margin-bottom: 16px; line-height: 1.5; position: relative; padding-left: 25px; }
+#info-box li::before { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 50%; transform: translateY(-50%); color: var(--pyke-gold); }
+#feedback-box { text-align: center; font-family: 'Roboto', sans-serif; }
+#feedback-box h2 { font-family: 'FiddlersCove', cursive; font-size: 2em; color: var(--pyke-gold); margin: 0 0 10px; }
+.close-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; color: var(--text-light); font-size: 1.5em; cursor: pointer; }
+
+/* --- MAIN CONTENT & GUIDE --- */
+body:not(.guide-active) #main-header, body:not(.guide-active) .container, body:not(.guide-active) #main-footer { display: none; }
+header { text-align: center; padding: 20px; margin-top: 40px; width: 100%; box-sizing: border-box; position: relative; z-index: 2; }
+.pyke-header-content { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; }
+.title-background { background: rgba(0,0,0,0.7); padding: 10px 30px; border: 3px solid var(--pyke-red); border-radius: 10px; box-shadow: 0 0 20px var(--pyke-red); }
+.subtitle-background { background: rgba(0,0,0,0.6); padding: 5px 20px; border: 2px solid var(--red-medium); border-radius: 8px; }
+.quote-background { background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 6px; margin-top: 5px; border: 1px solid var(--red-dark); }
+header h1 { font-family: 'FiddlersCove', 'Pirata One', cursive; font-size: 5.5em; color: var(--pyke-red); text-shadow: 3px 3px 0 #000, 0 0 15px var(--pyke-red); margin: 0; }
+header h2 { font-family: 'PiratesBay', 'Pirata One', cursive; font-size: 2.5em; color: var(--pyke-gold); text-shadow: 2px 2px 4px #000; margin: 0; }
+#header-quote { font-family: 'PiratesBay', 'Pirata One', cursive; font-size: 1.8em; color: var(--text-dim); margin: 0; text-shadow: 1px 1px 2px #000; }
+
+.container { max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(10, 10, 10, 0.15); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); border: 2px solid var(--red-accent); backdrop-filter: blur(5px); width: 95vw; box-sizing: border-box; position: relative; z-index: 2; background-position: center center; background-repeat: no-repeat; background-size: cover; transition: background-image 1s ease-in-out; }
+.guide-section { background-color: rgba(74, 23, 29, 0.65); margin-bottom: 30px; padding: 2vw; border-radius: 10px; border: 1px solid var(--red-accent); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; word-break: break-word; animation: pulse-border 4s infinite alternate; }
+@keyframes pulse-border { from { border-color: var(--red-accent); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 8px rgba(139, 0, 0, 0.5); } to { border-color: var(--pyke-gold); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 215, 0, 0.4); } }
+.guide-section:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(139, 0, 0, 0.6); }
+.guide-section h2 { font-family: 'FiddlersCove', 'Pirata One', cursive !important; font-size: clamp(2em, 5vw, 3em) !important; color: var(--pyke-gold); margin: 0 0 15px 0; text-shadow: 1px 1px 4px #000; }
+.guide-font { font-family: 'PiratesBay', 'Pirata One', cursive !important; font-size: clamp(1.6em, 2.5vw, 1.9em) !important; line-height: 1.6; }
+.guide-text-container p { text-shadow: 1px 1px 4px #000; }
+.guide-text-container p:not(:last-child) { margin-bottom: 1em; }
+#optimal-picks-list li { display: flex; align-items: center; text-shadow: 1px 1px 4px #000; }
+#optimal-picks-list .champion-icon { width: 32px; height: 32px; margin-right: 15px; border-radius: 5px; border: 1px solid var(--pyke-gold); }
+
+/* --- FOOTER --- */
+footer { text-align: center; margin: 50px auto; display: none; flex-direction: column; color: var(--text-light); max-width: 1200px; width: 95vw; position: relative; z-index: 2; background: url(media/pykeSwag.jpg) no-repeat center 20%; background-size: cover; background-color: rgba(0,0,0,.3); border: 3px solid var(--red-accent); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.7); overflow: hidden; }
+.useful-links { padding: 35px 20px; }
+.useful-links h3 { font-family: 'FiddlersCove', 'Pirata One', cursive; font-size: 2.5em; color: var(--pyke-gold); margin: 0 0 25px 0; text-shadow: 2px 2px 6px #000; }
+.useful-links ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.useful-links li { margin: 0; padding: 0; display: block; }
+.footer-button { font-family: 'PiratesBay', 'Pirata One', cursive; font-size: 1.6em; color: var(--text-light); text-decoration: none; background-color: rgba(10, 10, 10, 0.7); padding: 10px 20px; border-radius: 10px; border: 2px solid var(--pyke-red); box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); transition: all 0.3s ease; display: inline-block; }
+.footer-button:hover { color: var(--pyke-gold); background-color: var(--pyke-red); transform: scale(1.05) translateY(-3px); box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); border-color: var(--pyke-gold); }
+.footer-copyright { padding: 15px 20px; font-size: 0.9em; background-color: rgba(5, 2, 2, 0.9); backdrop-filter: blur(4px); border-top: 3px solid var(--red-accent); }
+.footer-copyright p { margin: 0; line-height: 1.5; color: var(--text-dim); }
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1000px) {
+    #desktop-content-wrapper { display: none; }
+    .mobile-not-supported-message { display: flex; }
+    .useful-links ul { flex-direction: column; }
+    header h1 { font-size: 3em; }
+    header h2 { font-size: 1.5em; }
 }

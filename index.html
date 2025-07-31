@@ -3,18 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offrole Pyke guide</title>
+    <title>P Y K E . I N F O</title>
+    <link rel="icon" href="https://i.gifer.com/origin/f6/f67132958352b2158810a27303c1b849_w200.gif" type="image/gif">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Pirata+One&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="loading-active">
+    <!-- Atmospheric Effects Containers -->
+    <div id="dark-sea-movement">
+        <div class="sea-shadow" id="shadow-1"></div>
+        <div class="sea-shadow" id="shadow-2"></div>
+    </div>
+    <div id="ghost-fish-container"></div>
+    <div id="fog-container">
+        <div class="fog" id="fog-1"></div>
+        <div class="fog" id="fog-2"></div>
+        <div class="fog" id="fog-3"></div>
+        <div class="fog" id="fog-4"></div>
+        <div class="fog" id="fog-5"></div>
+    </div>
+    <div id="bubbles-container"></div>
+    <div id="eyes-container"></div>
+    <div id="error-popups-container"></div>
+
+    <!-- Mobile Warning -->
     <div class="mobile-not-supported-message">
         <div class="message-content">
-            Use this page on PC.
+            Use this page on widescreen.
         </div>
     </div>
 
+    <!-- Main Content Wrapper -->
     <div id="desktop-content-wrapper">
         <div id="loading-screen" class="loading-screen loading-bg">
             <div class="loading-content">
@@ -24,568 +44,349 @@
         </div>
 
         <script>
-                const loadingMessages = [
-                "Sinking from Grandmaster to Diamond 4...",
-                "Missing yet another hook...",
-                "Alt-tabbing at the worst possible time...",
-                "Blaming lag for poor performance...",
-                "Losing another 20 LP...",
-                "Waiting for the enemy to int...",
-                "Trying to remember how to play Pyke...",
-                "Hoping for a good team this time...",
-                "Getting flamed by the 0/10 ADC...",
-                "Waiting for toplaner to stop mastubrbating...",
-                "Hoping the enemy jungler doesn't gank me...",
-                "Accidentally ulting the minion again...",
-                "Calculating if this execute is truly an execute...",
-                "Waiting for my laner to stop pushing so I can roam...",
-                "Diving 1v5 for that one execute...",
-                "My R is definitely not a KS, it's just gold sharing...",
-                "Ulting the 0/7 soraka with 1000 bounty...",
-                "Pyke support? More like Pyke carry!",
-                "Just one more kill to hit that reset...",
-                "Confirming my micro is peak Challenger...",
-                "Executing the enemy, but my team still says 'diff.'",
-                "Trying to find the angle for the perfect flank...",
-                "Waiting for my jungler to gank me... any day now.",
-                "Justifying my roam timers to the inting mid laner.",
-                "Calculating item power spikes for the 1v9.",
-                "My vision score is 0, but my KDA is peak.",
-                "Pushing the wave with 0 waveclear, but who cares?",
-                "Tracking the enemy jungler, he's definitely in my lane.",
-                "Tracking my jungler, hes definitely not coming to help.",
-                "Is it an engage, or am I just inting gracefully?",
-                "Giga-inting in lane to bait the enemy into a dive.",
-                "My ADC's micro is terrible, but my ult will carry them.",
-                "This tech is definitely off-meta, but trust the process.",
-                "Entering 'smurf queue' for sure with this KDA.",
-                "Only 50 more LP until I escape elo hell... maybe.",
-                "My one-trick Pyke is about to activate his true form.",
-                "Just pinged my cooldowns, now watch me dive."
-            ];
-
+            // Array of witty loading messages
+            const loadingMessages = ["Sinking from Grandmaster to Diamond 4...", "Missing yet another hook...", "Alt-tabbing at the worst possible time...", "Blaming lag for poor performance...", "Losing another 20 LP...", "Waiting for the enemy to int...", "Trying to remember how to play Pyke...", "Hoping for a good team this time...", "Getting flamed by the 0/10 ADC...", "Waiting for toplaner to stop afking...", "Hoping the enemy jungler doesn't gank me...", "Accidentally ulting the minion again...", "Calculating if this execute is truly an execute...", "Waiting for my laner to stop pushing so I can roam...", "Diving 1v5 for that one execute...", "My R is definitely not a KS, it's just gold sharing...", "Ulting the 0/7 soraka with 1000 bounty...", "Pyke support? More like Pyke carry!", "Just one more kill to hit that reset...", "Confirming my micro is peak Challenger...", "Executing the enemy, but my team still says 'diff.'", "Trying to find the angle for the perfect flank...", "Waiting for my jungler to gank me... any day now.", "Justifying my roam timers to the inting mid laner.", "Calculating item power spikes for the 1v9.", "My vision score is 0, but my KDA is peak.", "Pushing the wave with 0 waveclear, but who cares?", "Tracking the enemy jungler, he's definitely in my lane.", "Tracking my jungler, hes definitely not coming to help.", "Is it an engage, or am I just inting gracefully?", "Giga-inting in lane to bait the enemy into a dive.", "My ADC's micro is terrible, but my ult will carry them.", "This tech is definitely off-meta, but trust the process.", "Entering 'smurf queue' for sure with this KDA.", "Only 50 more LP until I escape elo hell... maybe.", "My one-trick Pyke is about to activate his true form.", "Just pinged my cooldowns, now watch me dive."];
             const randomIndex = Math.floor(Math.random() * loadingMessages.length);
-            const randomMessage = loadingMessages[randomIndex];
-            document.getElementById("loading-text").textContent = randomMessage;
+            document.getElementById("loading-text").textContent = loadingMessages[randomIndex];
         </script>
-            <audio id="background-music" loop autoplay>
-                <source src="media/pykeSong.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+            
+        <audio id="background-music" loop></audio>
 
-            <div id="selection-container">
-                <div id="pyke-role-screen" class="role-screen pyke-role-bg">
-                    <div class="selection-box">
-                        <h2 class="selection-question">What role is your Pyke?</h2>
-                        <div id="pyke-role-buttons" class="role-buttons">
-                            <button class="role-btn" data-role="TOP">
-                                <img src="media/top.png" alt="Top" class="role-img">
-                                <span class="role-label">Top</span>
-                            </button>
-                            <button class="role-btn jungle-disabled" data-role="JUNGLE" disabled>
-                                <img src="media/jungle.png" alt="Jungle" class="role-img">
-                                <span class="role-label">Jungle</span>
-                            </button>
-                            <button class="role-btn" data-role="MID">
-                                <img src="media/mid.png" alt="Mid" class="role-img">
-                                <span class="role-label">Mid</span>
-                            </button>
-                            <button class="role-btn" data-role="ADC">
-                                <img src="media/bot.png" alt="ADC" class="role-img">
-                                <span class="role-label">ADC</span>
-                            </button>
-                            <button class="role-btn" data-role="SUPPORT">
-                                <img src="media/support.png" alt="Support" class="role-img">
-                                <span class="role-label">Support</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="user-role-screen" class="role-screen user-role-bg" style="display: none;">
-                    <div class="selection-box">
-                        <h2 class="selection-question">What role are you?</h2>
-                        <div id="user-role-buttons" class="role-buttons">
-                            <button class="role-btn" data-role="TOP">
-                                <img src="media/top.png" alt="Top" class="role-img">
-                                <span class="role-label">Top</span>
-                            </button>
-                            <button class="role-btn" data-role="JUNGLE">
-                                <img src="media/jungle.png" alt="Jungle" class="role-img">
-                                <span class="role-label">Jungle</span>
-                            </button>
-                            <button class="role-btn" data-role="MID">
-                                <img src="media/mid.png" alt="Mid" class="role-img">
-                                <span class="role-label">Mid</span>
-                            </button>
-                            <button class="role-btn" data-role="ADC">
-                                <img src="media/bot.png" alt="ADC" class="role-img">
-                                <span class="role-label">ADC</span>
-                            </button>
-                            <button class="role-btn" data-role="SUPPORT">
-                                <img src="media/support.png" alt="Support" class="role-img">
-                                <span class="role-label">Support</span>
-                            </button>
-                        </div>
+        <!-- Role Selection Screens -->
+        <div id="selection-container">
+            <div id="pyke-role-screen" class="role-screen pyke-role-bg">
+                <div class="selection-box">
+                    <h2 class="selection-question">What role is your Pyke?</h2>
+                    <div id="pyke-role-buttons" class="role-buttons">
+                        <button class="role-btn" data-role="TOP"><img src="media/top.png" alt="Top" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn jungle-disabled" data-role="JUNGLE" disabled><img src="media/jungle.png" alt="Jungle" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="MID"><img src="media/mid.png" alt="Mid" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="ADC"><img src="media/bot.png" alt="ADC" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="SUPPORT"><img src="media/support.png" alt="Support" class="role-img"><span class="role-label"></span></button>
                     </div>
                 </div>
             </div>
-
-
-            <header id="main-header" style="display: none;">
-                <div class="pyke-header-content">
-                    <h1>Winning with offrole Pyke ultimate guide</h1>
-                </div>
-            </header>
-
-            <main id="guide-content" class="container guide-bg" style="display: none;">
-        <section id="about-karmafull-section" class="guide-section abyssal-glow guide-font" style="margin-bottom: 35px;">
-            <h2>About karmafuLL</h2>
-            <ul>
-                <li>3.5Mil mastery on Pyke</li>
-                <li>Rank 1 Pyke (Leagueofgraphs) multiple times</li>
-                <li>725LP Grandmaster peak</li>
-                <li>Peak 2.7k viewers on twitch after NoWay4u twitch raid for solowinning his soloq game in ~500LP masters.</li>
-                <li>Carried high Elo players like NoWay4u, Spearshot and actual pro players with off role Pyke.</li>
-            </ul>
-            <div style="margin-top:18px; display:flex; gap:16px;">
-                <a href="https://www.twitch.tv/xkarmafull" target="_blank" class="lyrics-button" style="background:#6441a5;color:#fff;">
-                    <i class="fab fa-twitch"></i> karmafuLL Twitch
-                </a>
-                <a href="https://www.instagram.com/karmafull2" target="_blank" class="lyrics-button" style="background:#E1306C;color:#fff;">
-                    <i class="fab fa-instagram"></i> karmafuLL Instagram
-                </a>
-            </div>
-        </section>
-
-
-                <section id="how-to-play-section" class="guide-section abyssal-glow guide-font">
-                    <h2 id="how-to-play-title"></h2>
-                    <p id="how-to-play-text"></p>
-                </section>
-                <section id="why-good-section" class="guide-section abyssal-glow guide-font">
-                    <h2 id="why-good-title"></h2>
-                    <p id="why-good-text"></p>
-                </section>
-                <section id="optimal-picks-section" class="guide-section abyssal-glow guide-font">
-                    <h2>Optimal Picks To Play With Pyke <span id="pyke-role-placeholder"></span></h2>
-                    <ul id="optimal-picks-list">
-                    </ul>
-                </section>
-            </main>
-
-            <footer id="main-footer" style="display: none;">
-                <p>&copy; 2025 karmafuLL. This page isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends.</p>
-            </footer>
-
-            <div class="music-player-wrapper">
-                <button id="toggle-music-controls-button" class="toggle-music-button" aria-label="Toggle Music Controls">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div id="music-controls" class="controls music-controls-expanded">
-                    <button id="pause-button" class="mute-button" aria-label="Pause Music">
-                        <i class="fas fa-pause"></i>
-                    </button>
-                    <div class="volume-slider-container">
-                        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.15" aria-label="Volume Slider">
+            <div id="user-role-screen" class="role-screen user-role-bg" style="display: none;">
+                <div class="selection-box">
+                    <h2 class="selection-question">What role are you?</h2>
+                    <div id="user-role-buttons" class="role-buttons">
+                        <button class="role-btn" data-role="TOP"><img src="media/top.png" alt="Top" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="JUNGLE"><img src="media/jungle.png" alt="Jungle" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="MID"><img src="media/mid.png" alt="Mid" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="ADC"><img src="media/bot.png" alt="ADC" class="role-img"><span class="role-label"></span></button>
+                        <button class="role-btn" data-role="SUPPORT"><img src="media/support.png" alt="Support" class="role-img"><span class="role-label"></span></button>
                     </div>
-                    <button id="lyrics-button" class="lyrics-button" aria-label="Show Lyrics">
-                        <i class="fas fa-music"></i> Song Lyrics
-                    </button>
-                    <button id="back-role-selection" class="lyrics-button" aria-label="Back to Role Selection" style="background:#222;color:#FFD700;">
-                        <i class="fas fa-arrow-left"></i> Back to role selection screen
-                    </button>
                 </div>
             </div>
+        </div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const loadingScreen = document.getElementById('loading-screen');
-                    const backgroundMusic = document.getElementById('background-music');
-                    const musicControls = document.getElementById('music-controls');
-                    const pauseButton = document.getElementById('pause-button');
-                    const lyricsButton = document.getElementById('lyrics-button');
-                    const volumeSlider = document.getElementById('volume-slider');
-                    
-                    const selectionContainer = document.getElementById('selection-container');
-                    const pykeRoleScreen = document.getElementById('pyke-role-screen');
-                    const userRoleScreen = document.getElementById('user-role-screen');
-                    const pykeRoleButtons = document.getElementById('pyke-role-buttons');
-                    const userRoleButtons = document.getElementById('user-role-buttons');
+        <!-- Main Guide Content -->
+        <header id="main-header" style="display: none;">
+            <div class="pyke-header-content">
+                <div class="title-background">
+                    <h1>P Y K E . I N F O</h1>
+                </div>
+                <div class="subtitle-background">
+                    <h2>Made by karmafuLL</h2>
+                </div>
+                <div class="quote-background">
+                    <h3 id="header-quote"></h3>
+                </div>
+            </div>
+        </header>
 
-                    const mainHeader = document.getElementById('main-header');
-                    const guideContent = document.getElementById('guide-content');
-                    const mainFooter = document.getElementById('main-footer');
+        <main id="guide-content" class="container guide-bg" style="display: none;">
+            <section id="how-to-play-section" class="guide-section abyssal-glow">
+                <h2 id="how-to-play-title"></h2>
+                <div id="how-to-play-text" class="guide-text-container guide-font"></div>
+            </section>
+            <section id="why-good-section" class="guide-section abyssal-glow">
+                <h2 id="why-good-title"></h2>
+                <div id="why-good-text" class="guide-text-container guide-font"></div>
+            </section>
+            <section id="optimal-picks-section" class="guide-section abyssal-glow">
+                <h2>Optimal Picks To Play With Pyke <span id="pyke-role-placeholder"></span></h2>
+                <ul id="optimal-picks-list" class="guide-font"></ul>
+            </section>
+        </main>
 
-                    const howToPlayTitle = document.getElementById('how-to-play-title');
-                    const howToPlayText = document.getElementById('how-to-play-text');
-                    const whyGoodTitle = document.getElementById('why-good-title');
-                    const whyGoodText = document.getElementById('why-good-text');
-                    const pykeRolePlaceholder = document.getElementById('pyke-role-placeholder');
-                    const optimalPicksList = document.getElementById('optimal-picks-list');
+        <footer id="main-footer" style="display: none;">
+            <div class="useful-links">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="https://mylolmmr.com" target="_blank" rel="noopener noreferrer" class="footer-button">Check your MMR</a></li>
+                    <li><a href="https://www.mobafire.com/league-of-legends/build/14-22-karmafulls-season-14-pyke-mid-guide-600378" target="_blank" rel="noopener noreferrer" class="footer-button">Pyke mid guide</a></li>
+                    <li><a href="https://modelviewer.lol/champions/pyke" target="_blank" rel="noopener noreferrer" class="footer-button">Pyke 3d skin viewer</a></li>
+                    <li><a href="https://porofessor.gg/download?ref=euWQW4aL" target="_blank" rel="noopener noreferrer" class="footer-button">Porofessor</a></li>
+                    <li><a href="https://universe.leagueoflegends.com/en_US/story/champion/pyke" target="_blank" rel="noopener noreferrer" class="footer-button">Pyke biography</a></li>
+                    <li><a href="https://github.com/karmafull/pyke-info" target="_blank" rel="noopener noreferrer" class="footer-button">Page's GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2025 karmafuLL. This page isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends.</p>
+            </div>
+        </footer>
 
-                    const musicPlayerWrapper = document.querySelector('.music-player-wrapper');
-                    const toggleMusicControlsButton = document.getElementById('toggle-music-controls-button');
+        <!-- Floating UI Controls -->
+        <div class="ui-wrapper">
+            <div class="top-buttons">
+                <button id="back-role-selection" aria-label="Back to Role Selection"><i class="fas fa-arrow-left"></i></button>
+                <button id="toggle-info-button" aria-label="Toggle Info Box"><i class="fas fa-info"></i></button>
+                <button id="toggle-music-controls-button" aria-label="Toggle Music Controls"><i class="fas fa-volume-up"></i></button>
+                <button id="toggle-feedback-button" aria-label="Share Feedback"><i class="fas fa-smile"></i></button>
+                <a href="https://paypal.me/xkarmafuLL" target="_blank" rel="noopener noreferrer" id="donation-button" aria-label="Donate"><i class="fas fa-dollar-sign"></i></a>
+            </div>
+            <div id="info-box" class="info-box-collapsed">
+                <h2>About karmafuLL</h2>
+                <ul>
+                    <li>3.5Mil mastery on Pyke</li>
+                    <li>Rank 1 Pyke (Leagueofgraphs) multiple times</li>
+                    <li>725LP Grandmaster peak</li>
+                    <li>Peak 2.7k viewers on twitch after NoWay4u twitch raid for solowinning his soloq game in ~500LP masters.</li>
+                    <li>Carried high Elo players like NoWay4u, Spearshot and actual pro players with off role Pyke.</li>
+                </ul>
+                <div class="social-links-container">
+                    <a href="https://www.twitch.tv/xkarmafull" target="_blank" class="social-button" style="background:#6441a5;color:#fff;"><i class="fab fa-twitch"></i> Twitch</a>
+                    <a href="https://www.instagram.com/karmafull2" target="_blank" class="social-button" style="background:#E1306C;color:#fff;"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+            <div id="music-controls" class="controls music-controls-collapsed">
+                <div class="song-title-container">
+                    <div class="now-playing-label">Now Playing:</div>
+                    <div id="current-song-info"></div>
+                </div>
+                <div class="music-player-buttons">
+                    <button id="prev-button" class="music-nav-button" aria-label="Previous Song"><i class="fas fa-backward"></i></button>
+                    <button id="pause-button" class="mute-button" aria-label="Pause Music"><i class="fas fa-pause"></i></button>
+                    <button id="next-button" class="music-nav-button" aria-label="Next Song"><i class="fas fa-forward"></i></button>
+                </div>
+                <div class="volume-slider-container">
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.15" aria-label="Volume Slider">
+                </div>
+            </div>
+            <div id="feedback-box" class="feedback-box-collapsed">
+                <button id="close-feedback-btn" class="close-btn">×</button>
+                <h2>Share your feedback?</h2>
+                <p>Help make P Y K E . I N F O better!</p>
+                <p>Add karmafuLL on discord: <strong>karmafuLL.</strong></p>
+            </div>
+        </div>
 
-                    let hasInteracted = false;
-                    document.addEventListener('click', () => {
-                        if (!hasInteracted) {
-                            hasInteracted = true;
-                            backgroundMusic.play().catch(() => {
-                                console.warn("Autoplay blocked");
-                            });
-                        }
-                    }, { once: true });
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // --- ELEMENT SELECTORS ---
+                const backgroundMusic = document.getElementById('background-music');
+                const musicControls = document.getElementById('music-controls');
+                const pauseButton = document.getElementById('pause-button');
+                const volumeSlider = document.getElementById('volume-slider');
+                const prevButton = document.getElementById('prev-button');
+                const nextButton = document.getElementById('next-button');
+                const currentSongInfo = document.getElementById('current-song-info');
+                const toggleMusicControlsButton = document.getElementById('toggle-music-controls-button');
+                const backToRoleSelectionButton = document.getElementById('back-role-selection');
+                const toggleInfoButton = document.getElementById('toggle-info-button');
+                const infoBox = document.getElementById('info-box');
+                const toggleFeedbackButton = document.getElementById('toggle-feedback-button');
+                const feedbackBox = document.getElementById('feedback-box');
+                const closeFeedbackBtn = document.getElementById('close-feedback-btn');
+                const loadingScreen = document.getElementById('loading-screen');
+                const selectionContainer = document.getElementById('selection-container');
+                const pykeRoleScreen = document.getElementById('pyke-role-screen');
+                const userRoleScreen = document.getElementById('user-role-screen');
+                const pykeRoleButtons = document.getElementById('pyke-role-buttons');
+                const userRoleButtons = document.getElementById('user-role-buttons');
+                const mainHeader = document.getElementById('main-header');
+                const guideContent = document.getElementById('guide-content');
+                const mainFooter = document.getElementById('main-footer');
+                const headerQuote = document.getElementById('header-quote');
+                const howToPlayTitle = document.getElementById('how-to-play-title');
+                const howToPlayTextContainer = document.getElementById('how-to-play-text');
+                const whyGoodTitle = document.getElementById('why-good-title');
+                const whyGoodTextContainer = document.getElementById('why-good-text');
+                const pykeRolePlaceholder = document.getElementById('pyke-role-placeholder');
+                const optimalPicksList = document.getElementById('optimal-picks-list');
 
+                // --- DATA & STATE ---
+                const playlist = [{ name: "Pyke Theme", src: "media/pykeTheme.mp3" }, { name: "Drown with me", src: "media/Drown with me.mp3" }, { name: "Fire to the Fuse", src: "media/firetothefuse.mp3" }, { name: "Fear the Ripper", src: "media/fear the ripper.mp3" }, { name: "Pyke Hardstyle", src: "media/pyke hardstyle.mp3" }, { name: "Making the Plays", src: "media/making the plays.mp3" }];
+                const pykeSkins = ['https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Pyke_OriginalSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/2/24/Pyke_SandWraithSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/3/3b/Pyke_BloodMoonSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/7/74/Pyke_PROJECTSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Pyke_PsyOpsSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/4/4e/Pyke_SentinelSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/3/37/Pyke_EmpyreanSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/2/29/Pyke_SoulFighterSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/d/d2/Pyke_FrightNightSkin.jpg'];
+                const quotes = ["Climbing to Diamond... From Masters.", "Getting flamed for sending P Y K E . I N F O link... My bad guys", "Wow another document I go run you down! >:)", "L9L9L9L9L9L9L9L9L9L9", "PYKE NOT MID CHAMP!", "PYKE NOT TOP CHAMP!", "PYKE NOT ADC CHAMP!", "JUNGLE PYKE PSYCHOSIS", "Sinking in the Elo ocean... Cold down there", "You're on the list.", "They'll never see me coming... or going.", "One kill, two kills, red kill, blue kill.", "Shared my cut. Now they're just... cut.", "Team fighting? I thought you said team dying.", "Vision score is just a number. KDA is an art.", "That's not a health bar, that's a list of names.", "I'm not kill-stealing, I'm securing the bounty."];
+                const guideData = {
+                    MID_TOP: { play: "As a top laner, try to freeze the wave under your tower or crash it if the enemy is low, creating roaming opportunities for your Pyke mid. Always communicate enemy summoner spell usage, especially Flash, and in teamfights, focus on setting up enemies to be executable for Pyke's ultimate.", why: "A mid lane Pyke provides exceptional roaming pressure and powerful resets during teamfights, and he can effectively follow up on your engages to secure kills.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
+                    ADC_TOP: { play: "Your primary goal in the early game is to play safe and avoid unnecessary deaths. Once Pyke hits level 6, he becomes a teamfight-carrying threat, which is your cue to group up. Always ping enemy Flashes and play around Pyke's ultimate by getting targets into execute range.", why: "Pyke ADC offers devastating resets in teamfights and can reliably follow your engages. He provides a more resilient ADC option that doesn't easily die before level 6.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
+                    SUPPORT_TOP: { play: "Create opportunities for your support Pyke to roam by freezing the wave near your turret or pushing it when the enemy is vulnerable. Keep track of enemy summoner spells and focus on setting up executes for Pyke's ultimate to maximize gold generation.", why: "Pyke support brings strong roaming potential to influence the map, can follow up on your engages, and doubles kill gold with his ultimate, accelerating your team's lead.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
+                    TOP_JUNGLE: { play: "Gank for your top lane Pyke frequently, as he has excellent gank setup. If the enemy's Flash is down, abuse this by repeatedly ganking his lane. Avoid building Collector, since Pyke's ultimate is a far superior execution tool. Look for invades with Pyke when his resources are high and always set up enemies for his R in fights.", why: "Pyke top offers reliable gank assistance and game-changing resets in teamfights. His ultimate shares gold, so always try to let him secure the kill for maximum economic advantage.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
+                    MID_JUNGLE: { play: "Your Pyke mid has strong gank setup, so prioritize ganking his lane, especially when the enemy's Flash is on cooldown. Coordinate invades when Pyke has enough health and mana. Remind your team not to buy Collector, and in teamfights, focus on enabling Pyke's ultimate for shared gold and resets.", why: "A mid lane Pyke provides potent gank setup and powerful teamfight resets. His gold-sharing ultimate means you should always aim to feed him the last hit on low-health enemies.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
+                    ADC_JUNGLE: { play: "Gank for your ADC Pyke often due to his strong setup, and repeatedly gank when the enemy summoner spells are down. You can also look for invades if Pyke is healthy. Ensure your team understands that Pyke's ultimate is the primary execution tool, making Collector redundant. Prioritize setting up executes for him in all fights.", why: "Pyke in the ADC role offers great gank setup from the bot lane and powerful resets in teamfights. His gold-sharing ultimate is a key economic tool, so let him secure kills whenever possible.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
+                    SUPPORT_JUNGLE: { play: "Pyke support provides strong gank setup, so gank his lane often, especially to abuse enemies without Flash. Coordinate with him for invades and securing objectives across the map. Ensure your team avoids Collector and focuses on enabling Pyke's ultimate for its massive gold-sharing advantage.", why: "A support Pyke offers reliable gank assistance and potent invades with his jungler. Use this synergy to take control of the map and extend your team's lead through shared objectives and kills.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
+                    TOP_MID: { play: "As a mid laner, help your top Pyke by pushing your wave to create roam timers. Always track enemy summoner spells for him. In teamfights, focus on getting enemies into execute range for his ultimate to trigger resets.", why: "A top lane Pyke brings strong roaming potential to your lane and offers powerful resets during teamfights, effectively following up on any engage you initiate.", picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"] },
+                    ADC_MID: { play: "In the early game, focus on surviving and farming safely. When your ADC Pyke reaches level 6, it's time to group and fight as a team. Always communicate enemy cooldowns and assist in setting up targets for Pyke's ultimate.", why: "Pyke as an ADC provides powerful resets in teamfights and can reliably follow your engages. Unlike many traditional ADCs, he is resilient and less prone to dying before level 6.", picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"] },
+                    SUPPORT_MID: { play: "When playing with a support Pyke, shove your wave to create roam opportunities for him to impact your lane. Keep track of enemy Flashes and help lower enemies' health for his ultimate. This coordination is key to snowballing.", why: "Pyke support has excellent roaming capabilities and can effectively follow up on your crowd control, turning small advantages into kills and objective control.", picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"] },
+                    TOP_ADC: { play: "Your primary job is to farm and scale safely until Pyke hits his level 6 powerspike, then group for teamfights. Avoid building Collector, as Pyke's ultimate is a much better execute. Always ping enemy Flashes and help get targets low for his R.", why: "Pyke top provides strong roams to influence the map and has powerful resets in teamfights. He can effectively follow your damage output to secure kills.", picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"] },
+                    MID_ADC: { play: "Focus on surviving the early laning phase. Once your mid Pyke hits level 6, he will look to roam and carry teamfights, so be ready to join him. Don't buy Collector, and always ping enemy summoner spells to help him secure executions.", why: "A mid lane Pyke brings strong roaming pressure to your lane and devastating resets in teamfights, while being able to follow up on your engages seamlessly.", picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"] },
+                    SUPPORT_ADC: { play: "Play aggressively with Pyke, looking for all-in opportunities. Freeze the wave to deny CS or crash it to set up dives with your jungler. Ensure you don't build Collector. Always track enemy Flashes and focus on setting up kills for Pyke's ultimate.", why: "This duo has a very strong laning phase and powerful teamfight resets. Pyke's gold-sharing ultimate and ability to follow your damage makes for a lethal combination.", picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"] },
+                    TOP_SUPPORT: { play: "Roam to the top lane to create pressure with your Pyke and secure objectives together. Place deep wards with Control Wards to help him find picks across the map. Always track enemy summoner spells and set up targets for his ultimate.", why: "A top lane Pyke provides strong roaming potential and devastating teamfight resets. He can effectively follow up on your engages to turn any fight in your favor.", picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"] },
+                    MID_SUPPORT: { play: "Look for opportunities to roam to mid lane and coordinate with Pyke to secure kills and objectives. Use Control Wards to establish vision control, allowing him to find picks. Always communicate enemy cooldowns and set up executes for his R.", why: "Pyke mid has strong roaming potential and powerful resets. He synergizes well with engaging supports, allowing you to control the map together.", picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"] },
+                    ADC_SUPPORT: { play: "Follow up on your ADC Pyke's engages and pick a champion with strong synergy (see optimal picks). Buy Control Wards to maintain vision control in your lane and the river. Always ping enemy summoner spells and help get targets low for his ultimate.", why: "Pyke in the ADC role creates a strong laning phase and offers powerful teamfight resets. He can effectively follow your crowd control to secure kills and snowball the game.", picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"] }
+                };
+                
+                let currentSongIndex = 0;
+                let hasInteracted = false; 
+                let selectedPykeRole = '';
+                let selectedUserRole = '';
+                let activeEyeSides = { left: false, right: false };
 
-                    const guideData = {
-                        MID_TOP: {
-                            play: "Try to freeze wave under your tower or push the wave in if enemy is low for free Pyke roam. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke mid offers strong roams. Pyke offers Strong resets during teamfights. Pyke Can follow your engages.",
-                            picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"]
-                        },
-                        ADC_TOP: {
-                            play: "Play safe & dont die earlygame. Pyke needs Level 6 to start carrying teamfights, that's when you should join them. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke ADC offers strong resets during teamfights. Pyke can follow your engages. Pyke is an adc that doesn't die multiple times before 6",
-                            picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"]
-                        },
-                        SUPPORT_TOP: {
-                            play: "Try to freeze wave under your tower or push the wave in if enemy is low for free pyke roam. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke support offers strong roams. Pyke Can follow your engages. Pyke can double the gold from a kill with Ultimate. ",
-                            picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"]
-                        },
+                // --- CORE LOGIC & FUNCTIONS ---
 
-                        TOP_JUNGLE: {
-                            play: "Gank your Pyke often because of strong gank setup. When enemy flash is down babysit the Pyke to abuse the enemy. Don't buy collector because Pyke ultimate is way better execution tool. You can  look for invades if Pyke is not out of mana & HP. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke TOP offers strong gank setup and strong resets during fights. Pyke shares gold with ultimate so always try to leave the kill for pyke for double gold.",
-                            picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
-                        },
-                        MID_JUNGLE: {
-                            play: "Gank your Pyke often because of strong setup. When enemy flash is down babysit the Pyke to abuse the enemy. Don't buy collector because Pyke ultimate is way better execution tool. You can  look for invades if Pyke is not out of mana & HP. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke MID offers strong gank setup and strong resets during fights. Pyke shares gold with ultimate so always try to leave the kill for pyke for double gold.",
-                            picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
-                        },
-                        ADC_JUNGLE: {
-                            play: "Gank your Pyke often because of strong setup. When enemy flash is down babysit the Pyke to abuse the enemies You can also look for invades if Pyke is not out of mana & HP. Don't buy collector because Pyke ultimate is way better execution tool. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke ADC offers strong gank setup and strong resets during fights. Pyke shares gold with ultimate so always try to leave the kill for pyke for double gold.",
-                            picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
-                        },
-                        SUPPORT_JUNGLE: {
-                            play: "Gank your Pyke often because of strong setup. When enemy flash is down babysit the Pyke to abuse the enemies. Don't buy collector because Pyke ultimate is way better execution tool. You can also look for invades if Pyke is not out of mana & HP. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke support offers strong gank setup and strong invades with jungler. Look for objectives on the map with your Pyke to extend lead.",
-                            picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
-                        },
+                const startMusic = () => { if (!hasInteracted) { backgroundMusic.play().then(() => { hasInteracted = true; pauseButton.innerHTML = '<i class="fas fa-pause"></i>'; }).catch(e => console.error("Music could not be started.", e)); } };
+                const loadSong = (index, shouldPlay) => { const song = playlist[index]; backgroundMusic.src = song.src; currentSongInfo.textContent = song.name; backgroundMusic.load(); if (shouldPlay) { backgroundMusic.play().then(() => pauseButton.innerHTML = '<i class="fas fa-pause"></i>').catch(() => pauseButton.innerHTML = '<i class="fas fa-play"></i>'); } else { pauseButton.innerHTML = '<i class="fas fa-play"></i>'; } };
+                const playNextSong = () => { currentSongIndex = (currentSongIndex + 1) % playlist.length; loadSong(currentSongIndex, true); };
+                const playPreviousSong = () => { currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length; loadSong(currentSongIndex, true); };
+                const populateSentences = (text, container) => { container.innerHTML = ''; text.split('.').filter(s => s.trim().length > 0).forEach(sentence => { const p = document.createElement('p'); p.textContent = sentence.trim() + '.'; container.appendChild(p); }); };
+                const setRandomQuote = () => { if(headerQuote) headerQuote.textContent = quotes[Math.floor(Math.random() * quotes.length)]; };
+                
+                // --- PAGE INITIALIZATION ---
 
-                        TOP_MID: {
-                            play: "Try to freeze wave under your tower or push the wave in if enemy is low for free pyke roam. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke TOP offers strong roams. Strong resets during teamfights. Pyke Can follow your engages.",
-                            picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"]
-                        },
-                        ADC_MID: {
-                            play: "Play safe & dont die earlygame. Pyke needs Level 6 to start carrying teamfights, that's when you should join them. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke ADC offers strong resets during teamfights. Pyke Can follow your engages. Pyke is an adc that doesn't die multiple times before 6",
-                            picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"]
-                        },
-                        SUPPORT_MID: {
-                            play: "Try to freeze wave under your tower or push the wave in if enemy is low for free Pyke roam. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke support offers strong roams. Pyke Can follow your engages",
-                            picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"]
-                        },
+                setTimeout(() => {
+                    loadingScreen.style.opacity = 0;
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        selectionContainer.style.display = 'block';
+                        pykeRoleScreen.style.opacity = 1;
+                        pykeRoleScreen.style.display = 'flex';
+                        document.body.classList.remove('loading-active');
+                        document.body.classList.add('role-select-active');
+                        loadSong(currentSongIndex, false);
+                    }, 500);
+                }, 2000);
 
-                        TOP_ADC: {
-                            play: "Play safe & dont die earlygame. Pyke needs Level 6 to start carrying teamfights, that's when you should join them. Don't buy collector because Pyke ultimate is way better execution tool. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke TOP offers strong roams. Strong resets during teamfights. Can follow your DPS. ",
-                            picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"]
-                        },
-                        MID_ADC: {
-                            play: "Play safe & dont die earlygame. Pyke needs Level 6 to start carrying teamfights, that's when you should join them. Don't buy collector because Pyke ultimate is way better execution tool. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke mid offers strong roams. Strong resets during teamfights. Pyke can follow your engages.",
-                            picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"]
-                        },
-                        SUPPORT_ADC: {
-                            play: "Play aggresively with Pyke. Try to freeze the wave to deny minions and Push the wave in when it's a dive angle with jungler. Don't buy collector because Pyke ultimate is way better execution tool. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Strong laning phase. Gold sharing with ultimate. Strong resets during teamfights. Can follow your DPS.",
-                            picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"]
-                        },
+                // --- ATMOSPHERIC & ANIMATION EFFECTS ---
 
-                        TOP_SUPPORT: {
-                            play: "Try to roam top & play with your pyke on the map to secure objectives & kills. Buy control wards to ward the map so Pyke can find picks. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke TOP offers strong roams, Strong resets during teamfights. Can follow your engages.",
-                            picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"]
-                        },
-                        MID_SUPPORT: {
-                            play: "Try to roam mid & play with your pyke on the map to secure objectives & kills. Buy control wards to ward the map so Pyke can find picks. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke MID offers strong roams, Strong resets during teamfights. Can follow your engages.",
-                            picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"]
-                        },
-                        ADC_SUPPORT: {
-                            play: "Follow your Pykes engages and pick something with synergy to Pyke. Optimal picks are below. Buy control wards to ward the map so Pyke can find picks. Always ping enemy flashes for Pyke. Play for Pyke R in fights by making enemies executable.",
-                            why: "Pyke ADC offers a strong laning phase, Strong resets during teamfights. Can follow your engages.",
-                            picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"]
-                        }
-                    };
+                const animateTitle = () => { const titleText = " P Y K E . I N F O "; const icons = ['🔪', '🩸', '💀', '🌊']; let textIndex = 0; let iconIndex = 0; setInterval(() => { const part1 = titleText.substring(textIndex); const part2 = titleText.substring(0, textIndex); document.title = icons[iconIndex] + part2 + part1; textIndex = (textIndex - 1 + titleText.length) % titleText.length; if(textIndex === titleText.length - 1) iconIndex = (iconIndex + 1) % icons.length; }, 400); };
+                animateTitle();
 
-                    let selectedPykeRole = '';
-                    let selectedUserRole = '';
+                const bubblesContainer = document.getElementById('bubbles-container');
+                for (let i = 0; i < 40; i++) { const b = document.createElement('div'); b.className = 'bubble'; b.style.left = `${Math.random()*100}vw`; b.style.animationDuration = `${Math.random()*8+6}s`; b.style.animationDelay = `${Math.random()*10}s`; const s = Math.random()*20+5; b.style.width = `${s}px`; b.style.height = `${s}px`; b.style.opacity = Math.random()*.7+.2; bubblesContainer.appendChild(b); }
 
-                    backgroundMusic.volume = 0.15;
-                    volumeSlider.value = 0.15;
+                const eyesContainer = document.getElementById('eyes-container');
+                const eyeColors = ['#000000', '#1a0000', '#2b0000', '#3d0000', '#500000'];
+                function createEye() {
+                    const availableSides = Object.keys(activeEyeSides).filter(side => !activeEyeSides[side]);
+                    if (availableSides.length === 0) return;
+                    const side = availableSides[Math.floor(Math.random() * availableSides.length)];
+                    activeEyeSides[side] = true;
+                    const eyePair = document.createElement('div'); eyePair.className = 'eye-pair';
+                    if (side === 'left') eyePair.style.left = `${Math.random()*10}vw`; else eyePair.style.right = `${Math.random()*10}vw`;
+                    eyePair.style.top = `${Math.random()*80+10}vh`;
+                    const duration = Math.random()*4+3;
+                    eyePair.style.animation = `fade-in-out ${duration}s ease-in-out`;
+                    eyePair.style.setProperty('--eye-color', eyeColors[Math.floor(Math.random()*eyeColors.length)]);
+                    eyesContainer.appendChild(eyePair);
+                    setTimeout(() => { eyePair.remove(); activeEyeSides[side] = false; }, duration * 1000);
+                }
+                setInterval(createEye, 2000);
 
-                    document.body.classList.add('loading-active');
-                    document.body.classList.remove('role-select-active');
+                const fishContainer = document.getElementById('ghost-fish-container');
+                function createGhostFish() {
+                    if (!document.body.classList.contains('guide-active')) return;
+                    const fish = document.createElement('div');
+                    fish.className = 'ghost-fish';
+                    const side = Math.random() > 0.5 ? 'left' : 'right';
+                    fish.style.top = `${Math.random() * 80 + 10}vh`;
+                    fish.style.setProperty('--duration', `${Math.random() * 10 + 15}s`);
+                    if(side === 'left') { fish.style.left = '-200px'; fish.style.animationName = 'swim-right'; }
+                    else { fish.style.right = '-200px'; fish.style.animationName = 'swim-left'; }
+                    fishContainer.appendChild(fish);
+                    setTimeout(() => fish.remove(), 25000);
+                }
+                setInterval(createGhostFish, 8000);
 
-                    loadingScreen.style.opacity = '1';
-                    pykeRoleScreen.style.display = 'none';
+                const errorPopupsContainer = document.getElementById('error-popups-container');
+                const errorMessages = [ { q: "LP gain seems a bit low. Recalibrate?", b1: "Yes", b2: "No" }, { q: "Enemy jungler spotted. Blame your own jungler?", b1: "Instantly", b2: "Later" }, { q: "Teammate died. Type 'ff 15' in chat?", b1: "Of course", b2: "Not yet" }, { q: "Wanna buy some elo?", b1: "Yes", b2: "No" }, { q: "Is your team going to win or lose?", b1: "Win", b2: "Lose" }, { q: "Objective spawning. Time to recall?", b1: "Perfect", b2: "Maybe not" }, { q: "You have been demoted to Iron IV. Accept?", b1: "Accept", b2: "Deny" }, { q: "Mid laner is 0/5. Send them a friend request?", b1: "Why not?", b2: "Block" }, { q: "A 'Teamfighting' tutorial is available. View now?", b1: "Skip", b2: "Skip" }, { q: "Connection to Ranked queue lost. Try ARAM?", b1: "Yes", b2: "No" }, { q: "Your bot lane is 0/8. Send gank?", b1: "Mute All", b2: "OK" }, { q: "Enemy has Baron. Time to split push?", b1: "Yes", b2: "Yes" }, { q: "New patch notes available. Read them?", b1: "In game", b2: "Never" }, { q: "You have been honored. Was it sarcasm?", b1: "Probably", b2: "Definitely" }, { q: "Enemy team has 3 smurfs. Surrender vote failed 1/4. Try again?", b1: "Yes", b2: "OK" }, { q: "Your support is roaming. Hug tower?", b1: "Engage 1v2", b2: "OK" }, { q: "Toxicity detected. Enable chat filter?", b1: "No", b2: "Disable" }, { q: "You missed smite. Report jungler?", b1: "Yes", b2: "Also Yes" }, { q: "Yasuo hit 0/10 power spike. Worry?", b1: "A little", b2: "A lot" }, { q: "Server is lagging. Was it your fault?", b1: "Yes", b2: "Blame Riot" }, { q: "A teammate pinged 'Enemy Missing'. Ignore?", b1: "Yes", b2: "Of course" }, { q: "Update client to v14.22? Your mods may break.", b1: "Later", b2: "Remind me next year" }, { q: "Your IP address has been leaked in chat. Change it?", b1: "Too late", b2: "OK" }, { q: "Enemy ADC is fed. Focus the support?", b1: "Logical", b2: "OK" }, { q: "You are autofilled. Dodge?", b1: "My wallet says no", b2: "OK" }, { q: "Low on mana. Use all abilities on wave?", b1: "Yes", b2: "Absolutely" }, { q: "Your team is all AD. Do you need magic damage?", b1: "What's that?", b2: "No" }, { q: "Player 'xX_DragonSlayer_Xx' has joined your lobby.", b1: "Dodge", b2: "Pray" }, { q: "You have 7 Control Wards in your inventory. Place one?", b1: "No", b2: "They're for style" }, { q: "The enemy has an open inhibitor. Take Baron instead?", b1: "Big brain", b2: "Yes" }, { q: "Your premade is feeding. Unfriend them?", b1: "After this game", b2: "OK" }, { q: "Enemy picked Teemo. Uninstall?", b1: "Yes", b2: "Proceed" }, { q: "Failed to connect to voice chat. A blessing?", b1: "Yes", b2: "Indeed" }, { q: "A Poro requires a snack. Feed it?", b1: "Always", b2: "Feed" }, { q: "You have been chat restricted for 10 games. Type 'gg ez'?", b1: "Bind it", b2: "OK" }, { q: "This is a promotional series to Diamond. Is your internet stable?", b1: "No", b2: "Let's find out" }, { q: "Your ADC has Cleanse. Will they use it?", b1: "No", b2: "For movement speed" }, { q: "A 5-man gank is heading bot. Is it warded?", b1: "What's a ward?", b2: "No" }, { q: "Match found. Are you ready to lose 25 LP?", b1: "Accept", b2: "Accept" }, { q: "The client has crashed. A sign to touch grass?", b1: "Invalid option", b2: "Ignore" } ];
+                function createErrorBox() {
+                    if (!document.body.classList.contains('guide-active')) return;
+                    const errorData = errorMessages[Math.floor(Math.random()*errorMessages.length)];
+                    const errorBox = document.createElement('div'); errorBox.className = 'error-box';
+                    errorBox.innerHTML = `<div class="error-title-bar"><span>Error</span><button class="error-close-btn">×</button></div><div class="error-content"><div class="error-icon">!</div><p>${errorData.q}</p></div><div class="error-buttons"><button>${errorData.b1}</button><button>${errorData.b2}</button></div>`;
+                    errorBox.style.top = `${Math.random()*60+15}vh`;
+                    const side = Math.random() > 0.5 ? 'left' : 'right';
+                    if (side === 'left') errorBox.style.left = `${Math.random()*15}vw`; else errorBox.style.right = `${Math.random()*15}vw`;
+                    errorPopupsContainer.appendChild(errorBox);
+                    const closeError = () => { errorBox.style.opacity = '0'; setTimeout(() => errorBox.remove(), 300); };
+                    errorBox.querySelectorAll('button').forEach(btn => btn.addEventListener('click', closeError));
+                }
+                setInterval(createErrorBox, (Math.random()*5000)+10000);
+
+                // --- EVENT LISTENERS ---
+
+                backgroundMusic.volume = 0.15;
+                volumeSlider.value = 0.15;
+                backgroundMusic.addEventListener('ended', playNextSong);
+                volumeSlider.addEventListener('input', () => { backgroundMusic.volume = volumeSlider.value; });
+                prevButton.addEventListener('click', playPreviousSong);
+                nextButton.addEventListener('click', playNextSong);
+                pauseButton.addEventListener('click', (event) => { event.stopPropagation(); if (!hasInteracted) { startMusic(); return; } if (backgroundMusic.paused) { backgroundMusic.play(); pauseButton.innerHTML = '<i class="fas fa-pause"></i>'; } else { backgroundMusic.pause(); pauseButton.innerHTML = '<i class="fas fa-play"></i>'; } });
+                toggleMusicControlsButton.addEventListener('click', () => { infoBox.classList.add('info-box-collapsed'); feedbackBox.classList.add('feedback-box-collapsed'); musicControls.classList.toggle('music-controls-collapsed'); });
+                toggleInfoButton.addEventListener('click', () => { musicControls.classList.add('music-controls-collapsed'); feedbackBox.classList.add('feedback-box-collapsed'); infoBox.classList.toggle('info-box-collapsed'); });
+                toggleFeedbackButton.addEventListener('click', () => { musicControls.classList.add('music-controls-collapsed'); infoBox.classList.add('info-box-collapsed'); feedbackBox.classList.toggle('feedback-box-collapsed'); });
+                closeFeedbackBtn.addEventListener('click', () => feedbackBox.classList.add('feedback-box-collapsed'));
+
+                backToRoleSelectionButton.addEventListener('click', () => {
+                    document.body.classList.remove('guide-active');
+                    document.body.classList.add('role-select-active');
+                    mainHeader.style.display = 'none';
+                    guideContent.style.display = 'none';
+                    mainFooter.style.display = 'none';
+                    selectionContainer.style.display = 'block';
+                    userRoleScreen.style.opacity = 0;
                     userRoleScreen.style.display = 'none';
-
-                    const mediaUrls = [
-                        "media/top.png", "media/jungle.png", "media/mid.png", "media/bot.png", "media/support.png",
-                        "media/backgroundWhatRoleIsPyke.jpg", "media/backgroundWhatRoleAreYou.jpg", "media/background.jpg", "media/loadingBackground.jpg",
-                        "media/pykeSong.mp3"
-                    ];
-
-                    Object.values({
-                        Jax: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Jax.png",
-                        Shen: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Shen.png",
-                        Kennen: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Kennen.png",
-                        Malphite: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Malphite.png",
-                        Warwick: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Warwick.png",
-                        Pantheon: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Pantheon.png",
-                        Shaco: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Shaco.png",
-                        Karthus: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Karthus.png",
-                        Hecarim: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Hecarim.png",
-                        Fiddlesticks: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Fiddlesticks.png",
-                        Orianna: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Orianna.png",
-                        Xerath: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Xerath.png",
-                        Galio: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Galio.png",
-                        Anivia: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Anivia.png",
-                        Neeko: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Neeko.png",
-                        Draven: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Draven.png",
-                        Tristana: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Tristana.png",
-                        Nilah: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Nilah.png",
-                        Jinx: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Jinx.png",
-                        Ashe: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Ashe.png",
-                        Alistar: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Alistar.png",
-                        Taric: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Taric.png",
-                        Yuumi: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Yuumi.png",
-                        Bard: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Bard.png",
-                        Braum: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Braum.png"
-                    }).forEach(url => mediaUrls.push(url));
-
-                    function preloadMedia(urls, callback) {
-                        let loaded = 0;
-                        let total = urls.length;
-                        let minTimePassed = false;
-                        let done = false;
-
-                        function checkDone() {
-                            if (loaded >= total && minTimePassed && !done) {
-                                done = true;
-                                callback();
-                            }
-                        }
-
-                        setTimeout(() => {
-                            minTimePassed = true;
-                            checkDone();
-                        }, 4000);
-
-                        urls.forEach(url => {
-                            if (url.endsWith('.mp3')) {
-                                const audio = new Audio();
-                                audio.src = url;
-                                audio.preload = "auto";
-                                audio.addEventListener('canplaythrough', () => {
-                                    loaded++;
-                                    checkDone();
-                                }, { once: true });
-                                audio.addEventListener('error', () => {
-                                    loaded++;
-                                    checkDone();
-                                }, { once: true });
-                            } else {
-                                const img = new Image();
-                                img.src = url;
-                                img.onload = () => {
-                                    loaded++;
-                                    checkDone();
-                                };
-                                img.onerror = () => {
-                                    loaded++;
-                                    checkDone();
-                                };
-                            }
-                        });
-                    }
-
-                    loadingScreen.style.opacity = '1';
-                    pykeRoleScreen.style.display = 'none';
-                    userRoleScreen.style.display = 'none';
-
-                    preloadMedia(mediaUrls, () => {
-                        loadingScreen.style.opacity = '0';
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                            pykeRoleScreen.style.display = 'flex';
-                            pykeRoleScreen.style.opacity = '1';
-                            document.body.classList.remove('loading-active');
-                            document.body.classList.add('role-select-active');
-                        }, 500);
-                    });
-
-                    pykeRoleButtons.addEventListener('click', (event) => {
-                        if (event.target.classList.contains('role-btn') && !event.target.classList.contains('jungle-disabled')) {
-                            selectedPykeRole = event.target.dataset.role;
-
-                            const userButtons = userRoleButtons.querySelectorAll('.role-btn');
-                            userButtons.forEach(button => {
-                                if (button.dataset.role === selectedPykeRole) {
-                                    button.disabled = true;
-                                    button.classList.add('disabled-by-selection');
-                                } else {
-                                    button.disabled = false;
-                                    button.classList.remove('disabled-by-selection');
-                                }
-                            });
-
-                            pykeRoleScreen.style.opacity = '0';
-                            setTimeout(() => {
-                                pykeRoleScreen.style.display = 'none';
-                                userRoleScreen.style.display = 'flex';
-                                userRoleScreen.style.opacity = '1';
-                                document.body.classList.add('role-select-active');
-                            }, 500);
-                        }
-                    });
-
-                    userRoleButtons.addEventListener('click', (event) => {
-                        if (event.target.classList.contains('role-btn') && !event.target.disabled) {
-                            selectedUserRole = event.target.dataset.role;
-                            userRoleScreen.style.opacity = '0';
-                            setTimeout(() => {
-                                userRoleScreen.style.display = 'none';
-                                selectionContainer.style.display = 'none';
-                                document.body.classList.remove('role-select-active');
-                                displayGuideContent();
-                            }, 500);
-                        }
-                    });
-
-                    const championImages = {
-                        Jax: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Jax.png",
-                        Shen: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Shen.png",
-                        Kennen: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Kennen.png",
-                        Malphite: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Malphite.png",
-                        Warwick: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Warwick.png",
-                        Pantheon: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Pantheon.png",
-                        Shaco: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Shaco.png",
-                        Karthus: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Karthus.png",
-                        Hecarim: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Hecarim.png",
-                        Fiddlesticks: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Fiddlesticks.png",
-                        Orianna: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Orianna.png",
-                        Xerath: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Xerath.png",
-                        Galio: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Galio.png",
-                        Anivia: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Anivia.png",
-                        Neeko: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Neeko.png",
-                        Draven: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Draven.png",
-                        Tristana: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Tristana.png",
-                        Nilah: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Nilah.png",
-                        Jinx: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Jinx.png",
-                        Ashe: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Ashe.png",
-                        Alistar: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Alistar.png",
-                        Taric: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Taric.png",
-                        Yuumi: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Yuumi.png",
-                        Bard: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Bard.png",
-                        Braum: "https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/Braum.png"
-                    };
-
-                    function displayGuideContent() {
-                        const key = `${selectedPykeRole}_${selectedUserRole}`;
-                        const content = guideData[key] || { play: "Content not found.", why: "Please select valid roles.", picks: [] };
-
-                        howToPlayTitle.textContent = `How to win with Pyke ${selectedPykeRole} as ${selectedUserRole}`;
-                        whyGoodTitle.textContent = `Why Pyke ${selectedPykeRole} is good (${selectedUserRole} guide)`;
-                        pykeRolePlaceholder.textContent = selectedPykeRole;
-
-                        howToPlayText.innerHTML = `<ul>${content.play.split('. ').filter(Boolean).map(s => `<li>${s.trim().replace(/\.$/, '')}</li>`).join('')}</ul>`;
-
-                        whyGoodText.innerHTML = `<ul>${content.why.split('. ').filter(Boolean).map(s => `<li>${s.trim().replace(/\.$/, '')}</li>`).join('')}</ul>`;
-
-                        optimalPicksList.innerHTML = '';
-                        content.picks.forEach(pick => {
-                            const li = document.createElement('li');
-                            const img = document.createElement('img');
-                            img.src = championImages[pick] || '';
-                            img.alt = pick;
-                            img.style.width = '32px';
-                            img.style.height = '32px';
-                            img.style.verticalAlign = 'middle';
-                            img.style.marginRight = '10px';
-                            img.style.borderRadius = '8px';
-                            li.appendChild(img);
-                            li.appendChild(document.createTextNode(pick));
-                            optimalPicksList.appendChild(li);
-                        });
-
-                        mainHeader.style.display = 'block';
-                        guideContent.style.display = 'block';
-                        mainFooter.style.display = 'block';
-                        musicPlayerWrapper.style.display = 'flex';
-
-                        mainHeader.style.opacity = '1';
-                        guideContent.style.opacity = '1';
-                        mainFooter.style.opacity = '1';
-                    }
-
-                    backgroundMusic.volume = 0.15;
-                    volumeSlider.value = 0.15;
-
-                    pauseButton.addEventListener('click', () => {
-                        if (backgroundMusic.paused) {
-                            backgroundMusic.play();
-                            pauseButton.querySelector('i').classList.remove('fa-play');
-                            pauseButton.querySelector('i').classList.add('fa-pause');
-                        } else {
-                            backgroundMusic.pause();
-                            pauseButton.querySelector('i').classList.remove('fa-pause');
-                            pauseButton.querySelector('i').classList.add('fa-play');
-                        }
-                    });
-
-                    volumeSlider.addEventListener('input', () => {
-                        backgroundMusic.volume = volumeSlider.value;
-                    });
-
-                    lyricsButton.addEventListener('click', () => {
-                        window.open('https://genius.com/Falconshield-drown-with-me-lyrics', '_blank');
-                    });
-
-                    const backRoleSelection = document.getElementById('back-role-selection');
-                    backRoleSelection.addEventListener('click', () => {
-                        window.location.reload();
-                    });
-
-                    toggleMusicControlsButton.addEventListener('click', () => {
-                        if (musicControls.classList.contains('music-controls-collapsed')) {
-                            musicControls.classList.remove('music-controls-collapsed');
-                            musicControls.classList.add('music-controls-expanded');
-                            toggleMusicControlsButton.querySelector('i').classList.remove('fa-bars');
-                            toggleMusicControlsButton.querySelector('i').classList.add('fa-times');
-                        } else {
-                            musicControls.classList.remove('music-controls-expanded');
-                            musicControls.classList.add('music-controls-collapsed');
-                            toggleMusicControlsButton.querySelector('i').classList.remove('fa-times');
-                            toggleMusicControlsButton.querySelector('i').classList.add('fa-bars');
-                        }
-                    });
-
-                    if (window.innerWidth <= 768) {
-                        musicControls.classList.remove('music-controls-expanded');
-                        musicControls.classList.add('music-controls-collapsed');
-                        toggleMusicControlsButton.querySelector('i').classList.remove('fa-times');
-                        toggleMusicControlsButton.querySelector('i').classList.add('fa-bars');
+                    pykeRoleScreen.style.display = 'flex';
+                    pykeRoleScreen.style.opacity = 1;
+                });
+                
+                pykeRoleButtons.addEventListener('click', (event) => {
+                    startMusic();
+                    const targetButton = event.target.closest('.role-btn');
+                    if (targetButton && !targetButton.disabled) {
+                        selectedPykeRole = targetButton.dataset.role;
+                        Array.from(userRoleButtons.children).forEach(button => button.disabled = (button.dataset.role === selectedPykeRole));
+                        pykeRoleScreen.style.opacity = 0;
+                        setTimeout(() => { pykeRoleScreen.style.display = 'none'; userRoleScreen.style.display = 'flex'; userRoleScreen.style.opacity = 1; }, 500);
                     }
                 });
-            </script>
+
+                userRoleButtons.addEventListener('click', (event) => {
+                    const targetButton = event.target.closest('.role-btn');
+                    if (targetButton && !targetButton.disabled) {
+                        selectedUserRole = targetButton.dataset.role;
+                        const key = `${selectedPykeRole}_${selectedUserRole}`;
+                        const data = guideData[key];
+                        if (data) {
+                            setRandomQuote();
+                            const randomSkinUrl = pykeSkins[Math.floor(Math.random()*pykeSkins.length)].replace(/\/revision\/.*/, '');
+                            guideContent.style.backgroundImage = `url('${randomSkinUrl}')`;
+                            howToPlayTitle.textContent = `How to play with ${selectedPykeRole} Pyke as ${selectedUserRole}`;
+                            populateSentences(data.play, howToPlayTextContainer);
+                            whyGoodTitle.textContent = `Why ${selectedPykeRole} Pyke is good with ${selectedUserRole}`;
+                            populateSentences(data.why, whyGoodTextContainer);
+                            pykeRolePlaceholder.textContent = `(${selectedPykeRole})`;
+                            optimalPicksList.innerHTML = '';
+                            data.picks.forEach(pick => { const li=document.createElement('li'); const img=document.createElement('img'); const championName=pick.replace(/\s/g, '').replace(/'/g, ''); img.src=`https://raw.githubusercontent.com/TheePepS/League_Of_Legends_Assets/master/Champions_assets/${championName}.png`; img.alt=pick; img.className='champion-icon'; const span=document.createElement('span'); span.textContent=pick; li.appendChild(img); li.appendChild(span); optimalPicksList.appendChild(li); });
+                            userRoleScreen.style.opacity = 0;
+                            setTimeout(() => {
+                                selectionContainer.style.display = 'none';
+                                document.body.classList.remove('role-select-active');
+                                document.body.classList.add('guide-active');
+                                mainHeader.style.display = 'block';
+                                guideContent.style.display = 'block';
+                                mainFooter.style.display = 'flex';
+                            }, 500);
+                        } else {
+                            alert('No guide data found for this role combination.');
+                        }
+                    }
+                });
+            });
+        </script>
     </div>
 </body>
 </html>
