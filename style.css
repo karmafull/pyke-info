@@ -1,0 +1,628 @@
+/* Import Google Fonts and define custom font */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@300;400;700&display=swap');
+
+@font-face {
+    font-family: 'FiddlersCove';
+    src: url('https://storage.googleapis.com/gemini-web-resources/fiddler.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PiratesBay';
+    src: url('https://storage.googleapis.com/gemini-web-resources/PiratesBay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Define color variables for the theme */
+:root {
+    --pyke-red: #A31C2D;
+    --pyke-gold: #FFD700;
+    --text-light: #E0E0E0;
+    --text-dim: #A0A0A0;
+    --red-dark: #1c0c0e; /* Darker red for backgrounds */
+    --red-medium-rgb: 74, 23, 29; /* RGB values for transparency */
+    --red-medium: #4A171D; /* Medium red for cards/elements */
+    --red-accent: #8B0000; /* Strong red accent */
+}
+
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.7;
+    background-color: var(--red-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* Loading Screen Styling */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/loadingBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 2.2em;
+    color: var(--pyke-gold);
+    margin-bottom: 25px;
+    font-family: 'FiddlersCove', 'Pirata One', cursive;
+    text-shadow: 2px 2px 8px #000;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid var(--pyke-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- New Role Selection Styles --- */
+#selection-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    transition: opacity 0.5s ease-out;
+}
+
+.role-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.5s ease-out;
+    opacity: 0; /* Initially hidden */
+    padding: 20px;
+}
+
+#pyke-role-screen {
+    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundWhatRoleIsPyke.jpg');
+}
+
+#user-role-screen {
+    background-image: url('https://storage.googleapis.com/gemini-web-resources/pyke-guide/backgroundPykeRoleChoose.jpg');
+}
+
+.selection-box {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid var(--red-accent);
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+
+.selection-question {
+    font-size: 3em;
+    color: var(--pyke-gold);
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-family: 'FiddlersCove', 'Pirata One', cursive;
+    text-shadow: 3px 3px 10px #000, -2px -2px 5px #000;
+    text-align: center;
+}
+
+.role-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.role-btn {
+    font-family: 'FiddlersCove', 'Pirata One', cursive;
+    font-size: 1.8em;
+    color: var(--text-light);
+    background-color: var(--red-medium);
+    border: 2px solid var(--pyke-red);
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(139,0,0,0.5);
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 10px;
+    cursor: pointer;
+    outline: none;
+    transition: filter 0.2s;
+}
+
+.role-btn:hover:not(:disabled) {
+    background-color: var(--pyke-red);
+    color: var(--pyke-gold);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.7), inset 0 0 15px rgba(255,215,0,0.3);
+}
+
+.role-btn:disabled {
+    background-color: #3a3a3a;
+    border-color: #222;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    transform: none;
+}
+
+.role-btn.jungle-disabled {
+    filter: grayscale(100%) brightness(0.7);
+    cursor: not-allowed;
+}
+
+.pyke-role-bg {
+    background: url('media/backgroundWhatRoleIsPyke.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+.user-role-bg {
+    background: url('media/backgroundWhatRoleAreYou.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+.guide-bg {
+    background: url('media/background.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+
+/* Guide content font */
+.guide-font {
+    font-family: 'PiratesBay', 'Pirata One', cursive !important;
+}
+
+body.loading-active .controls,
+body.role-select-active .controls {
+    display: flex !important;
+}
+
+/* Lock controls to top right */
+.controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 50px;
+    z-index: 1001;
+    flex-wrap: wrap;
+}
+
+/* Music Controls */
+.mute-button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.mute-button:hover {
+    color: var(--pyke-gold);
+}
+
+#volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 5px;
+    background: var(--text-dim);
+    outline: none;
+    border-radius: 5px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--pyke-gold);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: var(--pyke-gold);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Lyrics button */
+.lyrics-button {
+    background: none;
+    border: none;
+    color: var(--pyke-gold);
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.lyrics-button:hover {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--pyke-red);
+}
+
+/* Lyrics Modal */
+.lyrics-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+.lyrics-content {
+    background: #222;
+    color: var(--pyke-gold);
+    padding: 32px 24px;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 40px #000;
+    font-family: 'PiratesBay', 'Pirata One', cursive;
+}
+.close-lyrics {
+    position: absolute;
+    top: 12px; right: 18px;
+    background: none;
+    border: none;
+    color: var(--pyke-gold);
+    font-size: 2em;
+    cursor: pointer;
+}
+.lyrics-text {
+    white-space: pre-wrap;
+    font-size: 1em;
+    color: var(--text-light);
+    margin-top: 16px;
+    font-family: 'Roboto', monospace;
+}
+
+/* Role image button styling */
+.role-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 10px;
+    cursor: pointer;
+    outline: none;
+    transition: filter 0.2s;
+}
+.role-btn:disabled,
+.role-btn.jungle-disabled {
+    filter: grayscale(100%) brightness(0.7);
+    cursor: not-allowed;
+}
+.role-img {
+    width: 64px;
+    height: 64px;
+    display: block;
+    pointer-events: none;
+}
+
+/* Selection box and question */
+.selection-box {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid var(--red-accent);
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+.selection-question {
+    font-size: 3em;
+    color: var(--pyke-gold);
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-family: 'FiddlersCove', 'Pirata One', cursive;
+    text-shadow: 3px 3px 10px #000, -2px -2px 5px #000;
+    text-align: center;
+}
+.role-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Main content container */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(10, 10, 10, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--red-accent);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+    width: 95vw;
+    box-sizing: border-box;
+}
+
+/* Guide section */
+.guide-section {
+    background-color: rgba(74, 23, 29, 0.65);
+    margin-bottom: 30px;
+    padding: 2vw 2vw;
+    border-radius: 10px;
+    border: 1px solid var(--red-accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    word-break: break-word;
+}
+.guide-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.6);
+}
+.guide-section h2 {
+    font-family: 'FiddlersCove', 'Pirata One', cursive !important;
+    font-size: clamp(2em, 5vw, 3em) !important;
+    color: var(--pyke-gold);
+    margin: 0 0 15px 0;
+    text-shadow: 1px 1px 4px #000;
+}
+
+/* Guide section font and sizing for all sections (reduce size) */
+.guide-section.guide-font,
+.guide-section ul,
+.guide-section li,
+.guide-section p {
+    font-family: 'PiratesBay', 'Pirata One', cursive !important;
+    font-size: clamp(1em, 2.5vw, 1.25em) !important;
+}
+
+.guide-section,
+.guide-section h2,
+.guide-section p,
+.guide-section ul,
+.guide-section li {
+    text-shadow: 1px 1px 4px #000, 0 0 2px #000;
+    line-height: 1.4;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+    word-break: break-word;
+}
+li {
+    font-family: 'PiratesBay';
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1.1em;
+    word-break: break-word;
+}
+li::before {
+    content: '\f105';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--pyke-gold);
+    font-size: 1.2em;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 3px solid var(--red-accent);
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+header h1 {
+    font-family: 'FiddlersCove', 'Pirata One', cursive;
+    font-size: 3.5em;
+    color: var(--pyke-red);
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin: 0;
+}
+footer {
+    padding: 20px;
+    background-color: var(--red-medium);
+    color: var(--text-dim);
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 3px solid var(--red-accent);
+    width: 100%;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.loading-bg {
+    background: url('media/loadingBackground.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+
+#main-header,
+#guide-content,
+#main-footer {
+    opacity: 1 !important;
+    transition: opacity 0.5s ease-in;
+}
+
+/* Add styling for role label text in buttons */
+.role-label {
+    display: block;
+    margin-top: 6px;
+    font-size: 1em;
+    color: var(--pyke-gold);
+    font-family: 'PiratesBay', 'Pirata One', cursive;
+    text-shadow: 1px 1px 4px #000;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Champion image in optimal picks list */
+#optimal-picks-list img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #000;
+    background: #222;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .selection-box {
+        padding: 20px;
+        width: 90%;
+    }
+    .selection-question {
+        font-size: 2em;
+    }
+    .role-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    header h1 {
+        font-size: 2.5em;
+    }
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+    .guide-section {
+        padding: 20px;
+    }
+    .guide-section h2 {
+        font-size: 1.8em;
+    }
+    .controls {
+        flex-direction: column;
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        max-width: 98vw;
+        margin: 10px auto;
+        padding: 10px;
+    }
+    .guide-section {
+        padding: 4vw 2vw;
+    }
+    .controls {
+        top: 10px;
+        right: 10px;
+        gap: 8px;
+        padding: 8px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100vw;
+        margin: 0;
+        padding: 2vw;
+        border-radius: 0;
+    }
+    .guide-section {
+        padding: 5vw 2vw;
+        margin-bottom: 18px;
+    }
+    .controls {
+        flex-direction: column;
+        align-items: flex-end;
+        top: 5px;
+        right: 5px;
+        gap: 6px;
+        padding: 6px 6px;
+        border-radius: 20px;
+    }
+    .lyrics-button {
+        font-size: 1em;
+        padding: 6px 10px;
+    }
+    .volume-slider-container {
+        min-width: 60px;
+        max-width: 100px;
+        width: 40vw;
+    }
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+/* Make images and buttons scale well */
+.role-img {
+    width: min(64px, 12vw);
+    height: min(64px, 12vw);
+    display: block;
+    pointer-events: none;
+}
+
+.role-btn {
+    font-size: clamp(1em, 3vw, 1.8em);
+    margin: 0 6px;
+    padding: 0;
+}
