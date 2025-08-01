@@ -1,8 +1,8 @@
-<img width="2560" height="961" alt="{8E9A99E5-95F7-45FE-8C26-89E016B90883}" src="https://github.com/user-attachments/assets/894bca4e-3546-402c-b121-76a35577579c" /># P Y K E . I N F O - The Ultimate Pyke Guide
+# P Y K E . I N F O - The Ultimate Pyke Guide
 
 <p align="center">
   <a href="https://pyke.info/">
-    <img src="https://i.gifer.com/origin/f6/f67132958352b2158810a27303c1b849_w200.gif" alt="P Y K E . I N F O"/>
+    <img src="https://r2.fakecrime.bio/uploads/24324a9a-fcdf-4c2f-907d-7a142c4a12d0.png" alt="P Y K E . I N F O"/>
   </a>
 </p>
 
@@ -11,7 +11,7 @@
     <br />
     <a href="https://github.com/karmafull/pyke-info/issues">Report Bug</a>
     ·
-    <a href="https://github.com/karmafull/pyke-info/issues">Request Feature</a>
+    <a href="https://pyke.info">Visit site</a>
 </p>
 
 ## Welcome to P Y K E . I N F O
@@ -21,17 +21,14 @@ P Y K E . I N F O is an interactive guide for the League of Legends champion Pyk
 ### How it Works
 
 1.  **Choose Pyke's Role:**
-
-https://r2.fakecrime.bio/uploads/8059979b-913b-476a-8321-6e9b9daec5a3.png
+    <img src="https://r2.fakecrime.bio/uploads/8059979b-913b-476a-8321-6e9b9daec5a3.png" alt="Choose Pyke's Role"/>
    
 2.  **Select Your Role:**
-    
-https://r2.fakecrime.bio/uploads/549e0bda-ffa7-4c1f-9fe8-3ae9437719fc.png
+    <img src="https://r2.fakecrime.bio/uploads/549e0bda-ffa7-4c1f-9fe8-3ae9437719fc.png" alt="Select Your Role"/>
 
 3.  **Get a Personalized Guide:**
     Receive a tailored guide with tips on how to play with Pyke in your specific lane matchup.
-
-https://r2.fakecrime.bio/uploads/95a27551-61df-4b2a-b627-ace80dc949eb.png
+    <img src="https://r2.fakecrime.bio/uploads/95a27551-61df-4b2a-b627-ace80dc949eb.png" alt="Personalized Guide"/>
 
 ## Features
 
