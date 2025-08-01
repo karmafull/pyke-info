@@ -27,7 +27,7 @@ P Y K E . I N F O is an interactive guide for the League of Legends champion Pyk
     <img src="https://r2.fakecrime.bio/uploads/549e0bda-ffa7-4c1f-9fe8-3ae9437719fc.png" alt="Select Your Role"/>
 
 3.  **Get a Personalized Guide:**
-    Receive a tailored guide with tips on how to play with Pyke in your specific lane matchup.
+    Receive a tailored guide with tips on how to play with Pyke in your specific lane.
     <img src="https://r2.fakecrime.bio/uploads/95a27551-61df-4b2a-b627-ace80dc949eb.png" alt="Personalized Guide"/>
 
 ## Features
