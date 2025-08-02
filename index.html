@@ -250,24 +250,95 @@
                     { name: 'Soul Fighter', path: 'media/splash/Soul_Fighter_Pyke_Splash.png' }
                 ];
                 const quotes = ["Climbing to Diamond... From Masters.", "Getting flamed for sending P Y K E . I N F O link... My bad guys", "Wow another document I go run you down! >:)", "L9L9L9L9L9L9L9L9L9L9", "PYKE NOT MID CHAMP!", "PYKE NOT TOP CHAMP!", "PYKE NOT ADC CHAMP!", "JUNGLE PYKE PSYCHOSIS", "Sinking in the Elo ocean... Cold down there", "You're on the list."];
-                const guideData = {
-                    MID_TOP: { play: "As a top laner, try to freeze the wave under your tower or crash it if the enemy is low, creating roaming opportunities for your Pyke mid. Always communicate enemy summoner spell usage, especially Flash, and in teamfights, focus on setting up enemies to be executable for Pyke's ultimate.", why: "A mid lane Pyke provides exceptional roaming pressure and powerful resets during teamfights, and he can effectively follow up on your engages to secure kills.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
-                    ADC_TOP: { play: "Your primary goal in the early game is to play safe and avoid unnecessary deaths. Once Pyke hits level 6, he becomes a teamfight-carrying threat, which is your cue to group up. Always ping enemy Flashes and play around Pyke's ultimate by getting targets into execute range.", why: "Pyke ADC offers devastating resets in teamfights and can reliably follow your engages. He provides a more resilient ADC option that doesn't easily die before level 6.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
-                    SUPPORT_TOP: { play: "Create opportunities for your support Pyke to roam by freezing the wave near your turret or pushing it when the enemy is vulnerable. Keep track of enemy summoner spells and focus on setting up executes for Pyke's ultimate to maximize gold generation.", why: "Pyke support brings strong roaming potential to influence the map, can follow up on your engages, and doubles kill gold with his ultimate, accelerating your team's lead.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
-                    TOP_JUNGLE: { play: "Gank for your top lane Pyke frequently, as he has excellent gank setup. If the enemy's Flash is down, abuse this by repeatedly ganking his lane. Avoid building Collector, since Pyke's ultimate is a far superior execution tool. Look for invades with Pyke when his resources are high and always set up enemies for his R in fights.", why: "Pyke top offers reliable gank assistance and game-changing resets in teamfights. His ultimate shares gold, so always try to let him secure the kill for maximum economic advantage.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
-                    MID_JUNGLE: { play: "Your Pyke mid has strong gank setup, so prioritize ganking his lane, especially when the enemy's Flash is on cooldown. Coordinate invades when Pyke has enough health and mana. Remind your team not to buy Collector, and in teamfights, focus on enabling Pyke's ultimate for shared gold and resets.", why: "A mid lane Pyke provides potent gank setup and powerful teamfight resets. His gold-sharing ultimate means you should always aim to feed him the last hit on low-health enemies.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
-                    ADC_JUNGLE: { play: "Gank for your ADC Pyke often due to his strong setup, and repeatedly gank when the enemy summoner spells are down. You can also look for invades if Pyke is healthy. Ensure your team understands that Pyke's ultimate is the primary execution tool, making Collector redundant. Prioritize setting up executes for him in all fights.", why: "Pyke in the ADC role offers great gank setup from the bot lane and powerful resets in teamfights. His gold-sharing ultimate is a key economic tool, so let him secure kills whenever possible.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
-                    SUPPORT_JUNGLE: { play: "Pyke support provides strong gank setup, so gank his lane often, especially to abuse enemies without Flash. Coordinate with him for invades and securing objectives across the map. Ensure your team avoids Collector and focuses on enabling Pyke's ultimate for its massive gold-sharing advantage.", why: "A support Pyke offers reliable gank assistance and potent invades with his jungler. Use this synergy to take control of the map and extend your team's lead through shared objectives and kills.", picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"] },
-                    TOP_MID: { play: "As a mid laner, help your top Pyke by pushing your wave to create roam timers. Always track enemy summoner spells for him. In teamfights, focus on getting enemies into execute range for his ultimate to trigger resets.", why: "A top lane Pyke brings strong roaming potential to your lane and offers powerful resets during teamfights, effectively following up on any engage you initiate.", picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"] },
-                    ADC_MID: { play: "In the early game, focus on surviving and farming safely. When your ADC Pyke reaches level 6, it's time to group and fight as a team. Always communicate enemy cooldowns and assist in setting up targets for Pyke's ultimate.", why: "Pyke as an ADC provides powerful resets in teamfights and can reliably follow your engages. Unlike many traditional ADCs, he is resilient and less prone to dying before level 6.", picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"] },
-                    SUPPORT_MID: { play: "When playing with a support Pyke, shove your wave to create roam opportunities for him to impact your lane. Keep track of enemy Flashes and help lower enemies' health for his ultimate. This coordination is key to snowballing.", why: "Pyke support has excellent roaming capabilities and can effectively follow up on your crowd control, turning small advantages into kills and objective control.", picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"] },
-                    TOP_ADC: { play: "Your primary job is to farm and scale safely until Pyke hits his level 6 powerspike, then group for teamfights. Avoid building Collector, as Pyke's ultimate is a much better execute. Always ping enemy Flashes and help get targets low for his R.", why: "Pyke top provides strong roams to influence the map and has powerful resets in teamfights. He can effectively follow your damage output to secure kills.", picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"] },
-                    MID_ADC: { play: "Focus on surviving the early laning phase. Once your mid Pyke hits level 6, he will look to roam and carry teamfights, so be ready to join him. Don't buy Collector, and always ping enemy summoner spells to help him secure executions.", why: "A mid lane Pyke brings strong roaming pressure to your lane and devastating resets in teamfights, while being able to follow up on your engages seamlessly.", picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"] },
-                    SUPPORT_ADC: { play: "Play aggressively with Pyke, looking for all-in opportunities. Freeze the wave to deny CS or crash it to set up dives with your jungler. Ensure you don't build Collector. Always track enemy Flashes and focus on setting up kills for Pyke's ultimate.", why: "This duo has a very strong laning phase and powerful teamfight resets. Pyke's gold-sharing ultimate and ability to follow your damage makes for a lethal combination.", picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"] },
-                    TOP_SUPPORT: { play: "Roam to the top lane to create pressure with your Pyke and secure objectives together. Place deep wards with Control Wards to help him find picks across the map. Always track enemy summoner spells and set up targets for his ultimate.", why: "A top lane Pyke provides strong roaming potential and devastating teamfight resets. He can effectively follow up on your engages to turn any fight in your favor.", picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"] },
-                    MID_SUPPORT: { play: "Look for opportunities to roam to mid lane and coordinate with Pyke to secure kills and objectives. Use Control Wards to establish vision control, allowing him to find picks. Always communicate enemy cooldowns and set up executes for his R.", why: "Pyke mid has strong roaming potential and powerful resets. He synergizes well with engaging supports, allowing you to control the map together.", picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"] },
-                    ADC_SUPPORT: { play: "Follow up on your ADC Pyke's engages and pick a champion with strong synergy (see optimal picks). Buy Control Wards to maintain vision control in your lane and the river. Always ping enemy summoner spells and help get targets low for his ultimate.", why: "Pyke in the ADC role creates a strong laning phase and offers powerful teamfight resets. He can effectively follow your crowd control to secure kills and snowball the game.", picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"] }
-                };
+const guideData = {
+    // Pyke is MID
+    MID_TOP: {
+        play: "Level 1 we invade. Follow the Pyke. As a top laner, manage your wave to create roaming windows for Pyke—either by freezing near your turret or crashing the wave. Be mindful of enemy jungle gank timers (around 3:15) and establish vision with Control Wards. Always ping enemy summoner spells. Picking a champion with strong CC is ideal to lock down targets and get them into execute range for Pyke's ultimate.",
+        why: "A mid lane Pyke provides exceptional roaming pressure and powerful resets during teamfights, and Pyke can effectively follow up on your engages to secure kills.",
+        picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"]
+    },
+    MID_JUNGLE: {
+        play: "Level 1 we invade. Follow the Pyke. Your Pyke mid has strong gank setup, so prioritize ganking that lane, especially when the enemy's Flash is on cooldown. Coordinate invades by placing Control Wards in the enemy jungle. Always ping enemy summoner spells. Remind your team not to buy Collector, and in teamfights, use your CC or AoE damage to enable Pyke's ultimate for shared gold and resets.",
+        why: "A mid lane Pyke provides potent gank setup and powerful teamfight resets. Pyke's gold-sharing ultimate means you should always aim to feed Pyke the last hit on low-health enemies.",
+        picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
+    },
+    MID_ADC: {
+        play: "Level 1 we invade. Follow the Pyke. Focus on surviving the early laning phase by warding to avoid ganks. Once Pyke hits level 6, Pyke will look to roam, so be ready to join skirmishes. Do not buy Collector. Always ping enemy summoner spells to help Pyke secure executions. Your job in fights is to provide consistent damage that gets enemies low enough for Pyke's ultimate.",
+        why: "A mid lane Pyke brings strong roaming pressure to your lane and devastating resets in teamfights, while being able to follow up on your engages seamlessly.",
+        picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"]
+    },
+    MID_SUPPORT: {
+        play: "Level 1 we invade. Follow the Pyke. Look for opportunities to roam to mid lane and coordinate with Pyke to secure kills. Use Control Wards to establish vision control in the river, allowing Pyke to find safe gank paths. Always ping enemy summoner spell cooldowns. Picking champions with reliable CC is crucial for setting up Pyke's combos and ultimate executes.",
+        why: "Pyke mid has strong roaming potential and powerful resets. Pyke synergizes well with engaging supports, allowing you to control the map together.",
+        picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"]
+    },
+
+    // Pyke is ADC
+    ADC_TOP: {
+        play: "Level 1 we invade. Follow the Pyke. Your primary goal is to play safe and ward your lane to track the enemy jungler. Once your ADC Pyke hits level 6, group for teamfights. Always ping enemy Flashes. In fights, use your CC and AoE damage to get multiple targets into execute range for Pyke's ultimate.",
+        why: "Pyke ADC offers devastating resets in teamfights and can reliably follow your engages. Pyke provides a more resilient bot lane option that doesn't easily die before level 6.",
+        picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"]
+    },
+    ADC_JUNGLE: {
+        play: "Level 1 we invade. Follow the Pyke. Gank for your ADC Pyke often; Pyke has excellent setup. Abuse enemies without Flash by repeatedly ganking bot, but be aware of counter-gank timers. Secure deep vision with Control Wards. Always ping enemy summoner spells. Ensure your team understands that Pyke's ultimate is the primary execution tool, making Collector redundant.",
+        why: "Pyke in the ADC role offers great gank setup from the bot lane and powerful resets in teamfights. Pyke's gold-sharing ultimate is a key economic tool, so let Pyke secure kills whenever possible.",
+        picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
+    },
+    ADC_MID: {
+        play: "Level 1 we invade. Follow the Pyke. In the early game, focus on surviving and farming safely. Ward the river to track the enemy jungler. When your ADC Pyke reaches level 6, be ready to rotate bot for teamfights. Always ping enemy summoner spells, and use your AoE damage or CC to assist in setting up targets for Pyke's ultimate.",
+        why: "Pyke as an ADC provides powerful resets in teamfights and can reliably follow your engages. Unlike many traditional ADCs, Pyke is resilient and less prone to dying before level 6.",
+        picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"]
+    },
+    ADC_SUPPORT: {
+        play: "Level 1 we invade. Follow the Pyke. Follow up on your ADC Pyke's engages with your own CC. Picking champions with strong, reliable crowd control is key. Maintain vision control in your lane and the river with Control Wards to enable Pyke's aggression. Always ping enemy summoner spells and help get targets low for Pyke's ultimate.",
+        why: "Pyke in the ADC role creates a strong laning phase and offers powerful teamfight resets. Pyke can effectively follow your crowd control to secure kills and snowball the game.",
+        picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"]
+    },
+
+    // Pyke is SUPPORT
+    SUPPORT_TOP: {
+        play: "Level 1 we invade. Follow the Pyke. Create opportunities for your support Pyke to roam by managing the wave. Place Control Wards in the river or enemy jungle to give Pyke safe paths. Always be aware of enemy gank timers. Always ping enemy summoner spells. Focus on using your CC to set up executions for Pyke's ultimate to maximize gold generation.",
+        why: "Pyke support brings strong roaming potential to influence the map, can follow up on your engages, and doubles kill gold with Pyke's ultimate, accelerating your team's lead.",
+        picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"]
+    },
+    SUPPORT_JUNGLE: {
+        play: "Level 1 we invade. Follow the Pyke. Pyke support provides strong gank setup, so gank that lane often, especially to abuse enemies without Flash. Coordinate with Pyke for invades using Control Wards. Always ping enemy summoner spells. Ensure your team avoids Collector and focuses on enabling Pyke's ultimate for its massive gold-sharing advantage.",
+        why: "A support Pyke offers reliable gank assistance and potent invades with the jungler. Use this synergy to take control of the map and extend your team's lead through shared objectives and kills.",
+        picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
+    },
+    SUPPORT_MID: {
+        play: "Level 1 we invade. Follow the Pyke. Shove your wave to create roam opportunities for your support Pyke to impact your lane. Use your own CC or AoE damage to make Pyke's skillshots easier to land. Place a Control Ward in a river bush. Always ping enemy summoner spells and help lower enemies' health for Pyke's ultimate.",
+        why: "Pyke support has excellent roaming capabilities and can effectively follow up on your crowd control, turning small advantages into kills and objective control.",
+        picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"]
+    },
+    SUPPORT_ADC: {
+        play: "Level 1 we invade. Follow the Pyke. Play aggressively with Pyke, looking for all-in opportunities when your CC abilities are available. Use wards to track the enemy jungler so you can play forward safely. Do not build Collector. Always ping enemy summoner spells and focus on bursting one target to set up kills for Pyke's ultimate.",
+        why: "This duo has a very strong laning phase and powerful teamfight resets. Pyke's gold-sharing ultimate and ability to follow your damage makes for a lethal combination.",
+        picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"]
+    },
+
+    // Pyke is TOP
+    TOP_JUNGLE: {
+        play: "Level 1 we invade. Follow the Pyke. Gank for your top lane Pyke frequently, as Pyke has excellent gank setup. If the enemy's Flash is down, abuse this by repeatedly ganking the lane. Use Control Wards for river vision. Always ping enemy summoner spells. Ensure your team knows Collector is redundant, and set up enemies for Pyke's R in fights.",
+        why: "Pyke top offers reliable gank assistance and game-changing resets in teamfights. Pyke's ultimate shares gold, so always try to let Pyke secure the kill for maximum economic advantage.",
+        picks: ["Pantheon", "Shaco", "Karthus", "Hecarim", "Fiddlesticks"]
+    },
+    TOP_MID: {
+        play: "Level 1 we invade. Follow the Pyke. As a mid laner, help your top Pyke by pushing your wave to create roam timers. Ward the top-side river to track the enemy jungler. Always ping enemy summoner spells. In teamfights, use your AoE damage and CC to get enemies into execute range for Pyke's ultimate to trigger resets.",
+        why: "A top lane Pyke brings strong roaming potential to your lane and offers powerful resets during teamfights, effectively following up on any engage you initiate.",
+        picks: ["Orianna", "Xerath", "Galio", "Anivia", "Neeko"]
+    },
+    TOP_ADC: {
+        play: "Level 1 we invade. Follow the Pyke. Your primary job is to farm and scale safely. Ward your lane entrances to be safe from ganks, as your top lane Pyke will be looking to roam. Once Pyke hits level 6, group for teamfights. Do not build Collector. Always ping enemy summoner spells and help get targets low for Pyke's R.",
+        why: "Pyke top provides strong roams to influence the map and has powerful resets in teamfights. Pyke can effectively follow your damage output to secure kills.",
+        picks: ["Draven", "Tristana", "Nilah", "Jinx", "Ashe"]
+    },
+    TOP_SUPPORT: {
+        play: "Level 1 we invade. Follow the Pyke. Roam to the top lane to create pressure with Pyke and secure Rift Herald. Place deep Control Wards in the top-side enemy jungle to help Pyke find picks. Always ping enemy summoner spells. Use your CC to set up targets for Pyke's ultimate.",
+        why: "A top lane Pyke provides strong roaming potential and devastating teamfight resets. Pyke can effectively follow up on your engages to turn any fight in your favor.",
+        picks: ["Alistar", "Taric", "Yuumi", "Bard", "Braum"]
+    }
+};
                 
                 let currentSongIndex = 0;
                 let hasInteracted = false; 
@@ -406,7 +477,108 @@
                 setInterval(createDeepSeaFish, 12000);
 
                 const errorPopupsContainer = document.getElementById('error-popups-container');
-                const errorMessages = [ { q: "LP gain seems a bit low. Recalibrate?", b1: "Yes", b2: "No" }];
+const errorMessages = [
+  { q: "LP gain seems a bit low. Recalibrate?", b1: "Yes", b2: "No" },
+  { q: "Top laner has achieved the 0/10 power spike. Divert all resources?", b1: "He's about to carry", b2: "Report and move on" },
+  { q: "Enemy jungler ganked top, mid, and bot simultaneously. Report for quantum tunneling?", b1: "Yes", b2: "Blame our jungler" },
+  { q: "Teammate typing 'we scale' is now 0/8. Believe?", b1: "I trust the process", b2: "Initiate surrender vote" },
+  { q: "Enemy support has out-damaged your ADC. Recommend new build path for ADC?", b1: "Tank items", b2: "A new keyboard" },
+  { q: "Spontaneous ARAM has begun mid lane at 15:00. Participate?", b1: "For the glory!", b2: "Farm side lanes" },
+  { q: "Smurf queue detected. Brace for impact?", b1: "I live for this", b2: "Call my mom" },
+  { q: "Promotional series initiated. Prepare for autofilled jungler who has never played before?", b1: "It is my destiny", b2: "Dodge immediately" },
+  { q: "Yasuo has blocked a friendly ultimate with Wind Wall. Commend?", b1: "Calculated", b2: "He's trying his best" },
+  { q: "Your Bard has left lane to collect a chime in the enemy jungle. Send thoughts and prayers?", b1: "He knows the way", b2: "Ping '?'" },
+  { q: "Vayne has tumbled into the enemy team 1v5. Follow up?", b1: "This is the moment!", b2: "Watch from a safe distance" },
+  { q: "You have a 50/50 chance of attacking the real Shaco. Commit?", b1: "I feel lucky", b2: "Run away screaming" },
+  { q: "Autofill activated. You are now the jungler. Apologize to team in advance?", b1: "Yes", b2: "I was born for this" },
+  { q: "Enemy team is attempting Baron with no vision and low HP. Steal or let them throw?", b1: "It's a trap", b2: "Hero play incoming" },
+  { q: "Enemy Katarina is 0/5 but just got one kill in a teamfight. Run?", b1: "Immediately", b2: "It's just one kill..." },
+  { q: "Enemy Nasus has been quiet for 20 minutes. Check his stack count?", b1: "I'd rather not know", b2: "Knowledge is power" },
+  { q: "Your Draven has 400 Adoration stacks. Gank his lane now?", b1: "The cash-out is imminent", b2: "Too much pressure" },
+  { q: "Team is voting to fountain dive at 20 minutes with a 2k gold lead. Endorse this strategy?", b1: "For the highlight reel", b2: "No, I like my LP" },
+  { q: "Your Riven is spam-pinging 'On My Way' to a 1v5. Prepare to assist?", b1: "She's built different", b2: "Mute pings" },
+  { q: "You've swept for Teemo shrooms, but your gut says there's one more. Face check the bush?", b1: "YOLO", b2: "Send the tank" },
+  { q: "Enemy Singed is proxying between your tier 2 and 3 towers. Chase him?", b1: "Yes", b2: "No, never chase Singed" },
+  { q: "Enemy Tryndamere has 1 HP and is running at you. He has ult?", b1: "Obviously", b2: "Maybe it's on cooldown..." },
+  { q: "Illaoi has ulted and spawned 5 tentacles. Fight her?", b1: "My time has come", b2: "Disengage and wait it out" },
+  { q: "A Zoe Paddle Star is flying towards you from another lane. Attempt to dodge?", b1: "It's already too late", b2: "Flash!" },
+  { q: "You have thrown all of your abilities at Master Yi. He has pressed Q. Recalculate life choices?", b1: "Yes", b2: "It was worth a shot" },
+  { q: "A Blitzcrank hook is emerging from the fog of war. Is it for you?", b1: "It's always for me", b2: "My ADC is closer" },
+  { q: "Enemy Aphelios has red and white guns. Engage in melee range?", b1: "Seems safe", b2: "Are you insane?" },
+  { q: "Enemy Jhin is on his 4th shot. Challenge him to a duel?", b1: "I can take him", b2: "Wait for him to reload" },
+  { q: "Duo partner is 0/3 and has started pinging your items. Offer encouragement?", b1: "We go next", b2: "Enable streamer mode" },
+  { q: "Teammate has been AFK for 2 minutes and is now typing a novel in chat. Read it?", b1: "I need the lore", b2: "/mute all" },
+  { q: "You are on a 10-game win streak. The next queue is likely a trap?", b1: "I'm unstoppable", b2: "Quit while I'm ahead" },
+  { q: "Your team has a 10k gold lead but is losing every teamfight. Force another one?", b1: "Third time's the charm", b2: "Split push and pray" },
+  { q: "Mid laner has pinged for a gank 17 times in 30 seconds. Path mid?", b1: "On my way!", b2: "Mute pings and farm krugs" },
+  { q: "The enemy has vision of your entire jungle. Is that a ward or is the jungler just paranoid?", b1: "It's probably nothing", b2: "Buy 12 control wards" },
+  { q: "Support has not purchased a support item. Remind them?", b1: "Gently", b2: "This is a new meta" },
+  { q: "You have been one-shot by a full tank Ornn. Check the death recap?", b1: "I must know the truth", b2: "Ignorance is bliss" },
+  { q: "Enemy is taking dragon. Your jungler is pathing to krugs. Trust the process?", b1: "Krugs give more XP", b2: "Spam ping objective" },
+  { q: "Enemy player types 'gg ez' after a 55-minute back-and-forth game. Report for unsportsmanlike conduct?", b1: "Yes, with prejudice", b2: "He's just tilted" },
+  { q: "The enemy locked in attack speed Lulu top and is 5/0. Is this the new meta?", b1: "I need to try this", b2: "This is a reportable offense" },
+  { q: "A new patch just dropped. Read the notes or just wing it?", b1: "Reading is for nerds", b2: "I'll learn from my deaths" },
+  { q: "The enemy is taking your inhibitor. Your ADC is farming the raptor camp. Ping them?", b1: "He needs the gold", b2: "Ping 'alive' on the inhibitor" },
+  { q: "You have a 1-million-point Yasuo main on your team. Is this a free win?", b1: "Absolutely", b2: "Or a fast loss" },
+  { q: "Teammate is consistently making Bronze-level decisions in a Diamond game. Question their rank?", b1: "Politely in chat", b2: "Check their op.gg later" },
+  { q: "Sett has just ulted your Amumu into your entire team. Was this part of the plan?", b1: "Perfect delivery system", b2: "We're doomed" },
+  { q: "The enemy Heimerdinger has established a turret nest under your tower. Call for a gank?", b1: "Let's give a double buff", b2: "Abandon lane" },
+  { q: "Your Yuumi has attached to the 0/10 Yasuo. Is this the ultimate power spike?", b1: "The prophecy is true", b2: "Report both" },
+  { q: "Enemy team is all AD champions. Your top laner locks in Rammus. What is his response?", b1: "OK.", b2: "Alright." },
+  { q: "You have accidentally bought Doran's Blade on a mage. Recall immediately?", b1: "No one will notice", b2: "The shame is too great" },
+  { q: "Your team has drafted four ADCs and a support. Embrace the glass cannon?", b1: "Maximum firepower", b2: "Dodge and save your MMR" },
+  { q: "You have flashed into a wall with 3 enemies chasing you. 'All' chat?", b1: "'Calculated.'", b2: "Pretend it was lag" },
+  { q: "The screen has gone dark and there's a crow icon over your head. Alt+F4?", b1: "It's too late for that", b2: "Accept your fate" },
+  { q: "The enemy top laner you stomped has sent you a friend request. Accept?", b1: "I want to see the salt", b2: "Block and move on" },
+  { q: "Enemy team says 'open mid' at 10 minutes. Is this a genuine offer of surrender?", b1: "It's a trap", b2: "It's a gentleman's agreement" },
+  { q: "The enemy Ivern has just stolen your blue buff and left you a friendly smiley face. Appreciate the gesture?", b1: "A gift!", b2: "Report for taunting" },
+  { q: "Enemy Kalista has a Runaan's Hurricane and is hopping at the speed of light. Try to click on her?", b1: "My mechanics are god-tier", b2: "Use point-and-click abilities" },
+  { q: "You are being zoned from the minion wave by a level 2 Draven. Is the CS worth your life?", b1: "CS is everything", b2: "Soak XP and cry" },
+  { q: "Your laner is low and pushed up, a guaranteed kill. But your Krugs are up. Prioritize?", b1: "Gank the laner", b2: "The Krugs are calling my name" },
+  { q: "A giant pink heart is forming over your head. Hug your teammates?", b1: "Share the love!", b2: "Run to a corner and die alone" },
+  { q: "Your bot lane has had 8 kills between them in the first 5 minutes. Get involved?", b1: "It's a party down there!", b2: "That's a different server" },
+  { q: "Top laner just died 1v1 for the third time and typed 'jg diff'. Respond?", b1: "'Yes'", b2: "Mute and continue farming" },
+  { q: "You have dismounted the enemy Kled. He is now furiously attacking you to get Skaarl back. Back off?", b1: "He's basically dead", b2: "Respect the remount" },
+  { q: "Enemy team has secured four Mountain Drakes. Are your towers now made of paper?", b1: "Essentially", b2: "We can still win" },
+  { q: "You have loaded into game as jungler and realize you took Ignite instead of Smite. Announce your mistake?", b1: "I'm a ganking jungler now", b2: "Alt+F4" },
+  { q: "You have killed an enemy and now have a red crosshair over your head from Pyke. Does he know?", b1: "He knows.", b2: "It's probably a bug." },
+  { q: "Your jungler Kayn is still in base form at 20 minutes. Ping his transformation orbs?", b1: "Gently", b2: "He's playing for the late game" },
+  { q: "Enemy Garen is running at your 20% HP tank with his sword glowing. Can he be stopped?", b1: "Not by mortal means", b2: "Shield the tank!" },
+  { q: "Your Azir just attempted a Shurima Shuffle and ended up further away from the enemy. Compliment the effort?", b1: "Nice try", b2: "Spam '?' pings" },
+  { q: "Your inhibitor is down and the enemy team is at Baron. Attempt to backdoor their nexus?", b1: "The xPeke dream", b2: "Defend the base" },
+  { q: "You have 150,000 Blue Essence and nothing to spend it on. Buy another champion shard?", b1: "The collection must grow", b2: "Wait for the Essence Emporium" },
+  { q: "Your support has a vision score of 150 but your map is completely dark. Question the numbers?", b1: "Quality over quantity", b2: "They are farming wards" },
+  { q: "Your team has initiated a surrender vote at 15:01 after losing first blood. Agree?", b1: "The game is lost", b2: "We scale" },
+  { q: "The enemy Zed has a legendary skin and is playing very aggressively. Is this a 'skin-diff'?", b1: "It's scientifically proven", b2: "He's just confident" },
+  { q: "Your Leona just hit a Zenith Blade on a full HP Alistar under his tower. Follow up?", b1: "She who hesitates is lost", b2: "Let her go" },
+  { q: "The enemy Syndra has 7 spheres on the ground around you. Are you in danger?", b1: "They're just decorations", b2: "My Flash isn't on cooldown" },
+  { q: "Your Anivia has just blocked your escape path with her wall, trapping you with the enemy. Was this intentional?", b1: "A strategic masterpiece", b2: "Report for griefing" },
+  { q: "The enemy Aatrox is on his third Q. Do you walk towards him or away from him?", b1: "Into the sweet spot!", b2: "Away from the sweet spot!" },
+  { q: "You've been hit by a fully charged Poppy ultimate. Enjoy the flight?", b1: "Free recall", b2: "I'll be back" },
+  { q: "The enemy jungler has stolen Baron with a stray Lux ultimate. Blame your jungler?", b1: "100%", b2: "It was a calculated risk" },
+  { q: "The enemy Akali is in her shroud. Throw skillshots into the smoke?", b1: "One of them has to hit", b2: "Wait for her to get bored" },
+  { q: "Your Ornn has reached level 13. Spam ping your mythic item for an upgrade?", b1: "Immediately and repeatedly", b2: "Wait your turn" },
+  { q: "Your teammate died 1v1 but got the enemy's flash. They have typed 'worth' in chat. Agree?", b1: "Totally worth", b2: "The math doesn't add up" },
+  { q: "Your team is spam-pinging to invade the enemy's red buff at level 1. Join the fiesta?", b1: "Let's go!", b2: "I'll just guard our blue" },
+  { q: "Player has stopped moving and is likely typing. Are they complimenting your gameplay?", b1: "Probably", b2: "Definitely not" },
+  { q: "You have engaged on the enemy carry and are pinging for assistance. Your team is watching from a screen away. Is this a documentary?", b1: "They're admiring my mechanics", b2: "Okay, I'll just die then" },
+  { q: "Enemy Camille has ulted you. Can you escape the Hextech Ultimatum?", b1: "Not a chance", b2: "I can outplay her" },
+  { q: "You have finally cornered the enemy Ekko at 10% HP. He is glowing. Is it over?", b1: "He's about to press R", b2: "I've got him for sure" },
+  { q: "The game has ended. Honor the 10/0 carry or the support who didn't flame?", b1: "The silent support", b2: "The KDA king" },
+  { q: "You pinged for a gank, your jungler is nowhere near, but the enemy laner backed off. Outplayed?", b1: "Pure skill", b2: "I'm a genius" },
+  { q: "You are support, it is 20 minutes, and you still have your yellow trinket. Quietly base and swap?", b1: "No one saw anything", b2: "Announce my shame in chat" },
+  { q: "An enemy inhibitor has mysteriously fallen. Is it the work of a split-pushing Teemo?", b1: "The silent killer", b2: "It was probably minions" },
+  { q: "Your Tahm Kench has eaten you to 'save' you from a 100 HP enemy. You had all your cooldowns. Spam ping '?' on him?", b1: "Yes", b2: "He meant well" },
+  { q: "The number of '?' pings on your dead body has exceeded the client's limit. Mute pinger?", b1: "Yes", b2: "They are just passionate" },
+  { q: "Your Thresh has thrown a perfect lantern to save you. You have clicked on a minion instead. Blame the game?", b1: "Unclickable!", b2: "Admit my mistake" },
+  { q: "You have been ulted by Mordekaiser. Enjoy your 1v1 in the death realm?", b1: "This is my moment", b2: "Buy a QSS next time" },
+  { q: "Enemy Fiora has ulted you. Attempt to hug a wall to hide the vitals?", b1: "It's my only hope", b2: "Just let her have it" },
+  { q: "Your teammate starts the game by typing 'I am chat restricted'. Is this a good sign or a bad sign?", b1: "Good sign, they can't flame", b2: "Bad sign, they're reformed..." },
+  { q: "You lost. The correct reason is...?", b1: "My team", b2: "The enemy was better" },
+  { q: "You are at full health behind a minion. An enemy Miss Fortune has just Q'd it. Are you safe?", b1: "Perfectly safe", b2: "Prepare to be one-shot" },
+  { q: "Your mid laner is building Archangel's Staff and your ADC is building Manamune. Do you have enough damage for a 25-minute team fight?", b1: "We just need more time to scale", b2: "Surrender at 20" },
+  { q: "This is your final game for promotion to Master. The enemy team is all one-tricks with 70% win rates. Is Riot testing you?", b1: "This is the final test.", b2: "My journey ends here." }
+];
                 function createErrorBox() {
                     if (!document.body.classList.contains('guide-active') || !areErrorBoxesEnabled) return;
                     const errorData = errorMessages[Math.floor(Math.random()*errorMessages.length)];
