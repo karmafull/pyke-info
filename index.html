@@ -7,7 +7,7 @@
 
     <meta property="og:title" content="P Y K E . I N F O">
     <meta property="og:description" content="The best guide for winning with a Pyke, especially in forbidden roles.">
-    <meta property="og:image" content="https://storage.googleapis.com/gemini-web-resources/pyke-guide/loadingBackground.jpg">
+    <meta property="og:image" content="media/loadingBackground.jpg">
     <meta property="og:type" content="website">
     <meta name="description" content="The best guide for winning with a Pyke, especially in forbidden roles.">
     <meta name="theme-color" content="#A31C2D">
@@ -23,7 +23,10 @@
         <div class="sea-shadow" id="shadow-1"></div>
         <div class="sea-shadow" id="shadow-2"></div>
     </div>
+    <div id="coins-container"></div>
+    <div id="sea-floor"></div>
     <div id="ghost-fish-container"></div>
+    <div id="deep-sea-fish-container"></div>
     <div id="fog-container">
         <div class="fog" id="fog-1"></div>
         <div class="fog" id="fog-2"></div>
@@ -50,13 +53,6 @@
                 <div class="spinner"></div>
             </div>
         </div>
-
-        <script>
-            // Array of witty loading messages
-            const loadingMessages = ["Sinking from Grandmaster to Diamond 4...", "Missing yet another hook...", "Alt-tabbing at the worst possible time...", "Blaming lag for poor performance...", "Losing another 20 LP...", "Waiting for the enemy to int...", "Trying to remember how to play Pyke...", "Hoping for a good team this time...", "Getting flamed by the 0/10 ADC...", "Waiting for toplaner to stop afking...", "Hoping the enemy jungler doesn't gank me...", "Accidentally ulting the minion again...", "Calculating if this execute is truly an execute...", "Waiting for my laner to stop pushing so I can roam...", "Diving 1v5 for that one execute...", "My R is definitely not a KS, it's just gold sharing...", "Ulting the 0/7 soraka with 1000 bounty...", "Pyke support? More like Pyke carry!", "Just one more kill to hit that reset...", "Confirming my micro is peak Challenger...", "Executing the enemy, but my team still says 'diff.'", "Trying to find the angle for the perfect flank...", "Waiting for my jungler to gank me... any day now.", "Justifying my roam timers to the inting mid laner.", "Calculating item power spikes for the 1v9.", "My vision score is 0, but my KDA is peak.", "Pushing the wave with 0 waveclear, but who cares?", "Tracking the enemy jungler, he's definitely in my lane.", "Tracking my jungler, hes definitely not coming to help.", "Is it an engage, or am I just inting gracefully?", "Giga-inting in lane to bait the enemy into a dive.", "My ADC's micro is terrible, but my ult will carry them.", "This tech is definitely off-meta, but trust the process.", "Entering 'smurf queue' for sure with this KDA.", "Only 50 more LP until I escape elo hell... maybe.", "My one-trick Pyke is about to activate his true form.", "Just pinged my cooldowns, now watch me dive."];
-            const randomIndex = Math.floor(Math.random() * loadingMessages.length);
-            document.getElementById("loading-text").textContent = loadingMessages[randomIndex];
-        </script>
             
         <audio id="background-music" loop></audio>
 
@@ -91,31 +87,16 @@
         <!-- Main Guide Content -->
         <header id="main-header" style="display: none;">
             <div class="pyke-header-content">
-                <div class="title-background">
-                    <h1>P Y K E . I N F O</h1>
-                </div>
-                <div class="subtitle-background">
-                    <h2>Made by karmafuLL</h2>
-                </div>
-                <div class="quote-background">
-                    <h3 id="header-quote"></h3>
-                </div>
+                <div class="title-background"><h1>P Y K E . I N F O</h1></div>
+                <div class="subtitle-background"><h2>Made by karmafuLL</h2></div>
+                <div class="quote-background"><h3 id="header-quote"></h3></div>
             </div>
         </header>
 
         <main id="guide-content" class="container guide-bg" style="display: none;">
-            <section id="how-to-play-section" class="guide-section abyssal-glow">
-                <h2 id="how-to-play-title"></h2>
-                <div id="how-to-play-text" class="guide-text-container guide-font"></div>
-            </section>
-            <section id="why-good-section" class="guide-section abyssal-glow">
-                <h2 id="why-good-title"></h2>
-                <div id="why-good-text" class="guide-text-container guide-font"></div>
-            </section>
-            <section id="optimal-picks-section" class="guide-section abyssal-glow">
-                <h2>Optimal Picks To Play With Pyke <span id="pyke-role-placeholder"></span></h2>
-                <ul id="optimal-picks-list" class="guide-font"></ul>
-            </section>
+            <section id="how-to-play-section" class="guide-section abyssal-glow"><h2 id="how-to-play-title"></h2><div id="how-to-play-text" class="guide-text-container guide-font"></div></section>
+            <section id="why-good-section" class="guide-section abyssal-glow"><h2 id="why-good-title"></h2><div id="why-good-text" class="guide-text-container guide-font"></div></section>
+            <section id="optimal-picks-section" class="guide-section abyssal-glow"><h2>Optimal Picks To Play With Pyke <span id="pyke-role-placeholder"></span></h2><ul id="optimal-picks-list" class="guide-font"></ul></section>
         </main>
 
         <footer id="main-footer" style="display: none;">
@@ -130,9 +111,7 @@
                     <li><a href="https://github.com/karmafull/pyke-info" target="_blank" rel="noopener noreferrer" class="footer-button">Page's GitHub</a></li>
                 </ul>
             </div>
-            <div class="footer-copyright">
-                <p>© 2025 karmafuLL. This page isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends.</p>
-            </div>
+            <div class="footer-copyright"><p>© 2025 karmafuLL. This page isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends.</p></div>
         </footer>
 
         <!-- Floating UI Controls -->
@@ -141,6 +120,7 @@
                 <button id="back-role-selection" aria-label="Back to Role Selection"><i class="fas fa-arrow-left"></i></button>
                 <button id="toggle-info-button" aria-label="Toggle Info Box"><i class="fas fa-info"></i></button>
                 <button id="toggle-music-controls-button" aria-label="Toggle Music Controls"><i class="fas fa-volume-up"></i></button>
+                <button id="toggle-settings-button" aria-label="Toggle Settings"><i class="fas fa-gear"></i></button>
                 <button id="toggle-feedback-button" aria-label="Share Feedback"><i class="fas fa-smile"></i></button>
                 <a href="https://paypal.me/xkarmafuLL" target="_blank" rel="noopener noreferrer" id="donation-button" aria-label="Donate"><i class="fas fa-dollar-sign"></i></a>
             </div>
@@ -159,17 +139,49 @@
                 </div>
             </div>
             <div id="music-controls" class="controls music-controls-collapsed">
-                <div class="song-title-container">
-                    <div class="now-playing-label">Now Playing:</div>
-                    <div id="current-song-info"></div>
+                <div class="song-title-container"><div id="current-song-info"></div></div>
+                 <div class="progress-container">
+                    <span id="current-time">0:00</span>
+                    <input type="range" id="song-progress-slider" min="0" value="0" class="song-slider">
+                    <span id="total-duration">0:00</span>
                 </div>
                 <div class="music-player-buttons">
                     <button id="prev-button" class="music-nav-button" aria-label="Previous Song"><i class="fas fa-backward"></i></button>
-                    <button id="pause-button" class="mute-button" aria-label="Pause Music"><i class="fas fa-pause"></i></button>
+                    <button id="pause-button" class="mute-button" aria-label="Pause Music"><i class="fas fa-play"></i></button>
                     <button id="next-button" class="music-nav-button" aria-label="Next Song"><i class="fas fa-forward"></i></button>
                 </div>
                 <div class="volume-slider-container">
+                     <i class="fas fa-volume-down"></i>
                     <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.15" aria-label="Volume Slider">
+                     <i class="fas fa-volume-up"></i>
+                </div>
+                <ul id="playlist-container"></ul>
+            </div>
+            <div id="settings-box" class="settings-box-collapsed">
+                <h2>Settings</h2>
+                <div class="setting-item">
+                    <span>Custom Fonts</span>
+                    <label class="switch"><input type="checkbox" id="font-toggle" checked><span class="slider round"></span></label>
+                </div>
+                <div class="setting-item column">
+                    <label>Guide Background</label>
+                    <div id="splash-selector"></div>
+                </div>
+                <div class="error-settings-box">
+                    <h3>Error Popups</h3>
+                    <div class="setting-item">
+                        <span>Enable Popups</span>
+                        <label class="switch"><input type="checkbox" id="error-toggle" checked><span class="slider round"></span></label>
+                    </div>
+                    <div class="setting-item column">
+                        <label for="error-freq-slider">Frequency: <span id="error-freq-value">10</span>s</label>
+                        <div class="error-freq-control">
+                            <span>1s</span>
+                            <input type="range" id="error-freq-slider" min="1" max="10" value="10">
+                            <span>10s</span>
+                        </div>
+                    </div>
+                    <button id="clear-errors-btn">Clear All Errors</button>
                 </div>
             </div>
             <div id="feedback-box" class="feedback-box-collapsed">
@@ -182,7 +194,6 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // --- ELEMENT SELECTORS ---
                 const backgroundMusic = document.getElementById('background-music');
                 const musicControls = document.getElementById('music-controls');
                 const pauseButton = document.getElementById('pause-button');
@@ -190,6 +201,10 @@
                 const prevButton = document.getElementById('prev-button');
                 const nextButton = document.getElementById('next-button');
                 const currentSongInfo = document.getElementById('current-song-info');
+                const songProgressSlider = document.getElementById('song-progress-slider');
+                const currentTimeDisplay = document.getElementById('current-time');
+                const totalDurationDisplay = document.getElementById('total-duration');
+                const playlistContainer = document.getElementById('playlist-container');
                 const toggleMusicControlsButton = document.getElementById('toggle-music-controls-button');
                 const backToRoleSelectionButton = document.getElementById('back-role-selection');
                 const toggleInfoButton = document.getElementById('toggle-info-button');
@@ -197,6 +212,14 @@
                 const toggleFeedbackButton = document.getElementById('toggle-feedback-button');
                 const feedbackBox = document.getElementById('feedback-box');
                 const closeFeedbackBtn = document.getElementById('close-feedback-btn');
+                const toggleSettingsButton = document.getElementById('toggle-settings-button');
+                const settingsBox = document.getElementById('settings-box');
+                const fontToggle = document.getElementById('font-toggle');
+                const errorToggle = document.getElementById('error-toggle');
+                const errorFreqSlider = document.getElementById('error-freq-slider');
+                const errorFreqValue = document.getElementById('error-freq-value');
+                const clearErrorsBtn = document.getElementById('clear-errors-btn');
+                const splashSelector = document.getElementById('splash-selector');
                 const loadingScreen = document.getElementById('loading-screen');
                 const selectionContainer = document.getElementById('selection-container');
                 const pykeRoleScreen = document.getElementById('pyke-role-screen');
@@ -214,10 +237,19 @@
                 const pykeRolePlaceholder = document.getElementById('pyke-role-placeholder');
                 const optimalPicksList = document.getElementById('optimal-picks-list');
 
-                // --- DATA & STATE ---
                 const playlist = [{ name: "Pyke Theme", src: "media/pykeTheme.mp3" }, { name: "Drown with me", src: "media/Drown with me.mp3" }, { name: "Fire to the Fuse", src: "media/firetothefuse.mp3" }, { name: "Fear the Ripper", src: "media/fear the ripper.mp3" }, { name: "Pyke Hardstyle", src: "media/pyke hardstyle.mp3" }, { name: "Making the Plays", src: "media/making the plays.mp3" }];
-                const pykeSkins = ['https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Pyke_OriginalSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/2/24/Pyke_SandWraithSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/3/3b/Pyke_BloodMoonSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/7/74/Pyke_PROJECTSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Pyke_PsyOpsSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/4/4e/Pyke_SentinelSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/3/37/Pyke_EmpyreanSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/2/29/Pyke_SoulFighterSkin.jpg', 'https://static.wikia.nocookie.net/leagueoflegends/images/d/d2/Pyke_FrightNightSkin.jpg'];
-                const quotes = ["Climbing to Diamond... From Masters.", "Getting flamed for sending P Y K E . I N F O link... My bad guys", "Wow another document I go run you down! >:)", "L9L9L9L9L9L9L9L9L9L9", "PYKE NOT MID CHAMP!", "PYKE NOT TOP CHAMP!", "PYKE NOT ADC CHAMP!", "JUNGLE PYKE PSYCHOSIS", "Sinking in the Elo ocean... Cold down there", "You're on the list.", "They'll never see me coming... or going.", "One kill, two kills, red kill, blue kill.", "Shared my cut. Now they're just... cut.", "Team fighting? I thought you said team dying.", "Vision score is just a number. KDA is an art.", "That's not a health bar, that's a list of names.", "I'm not kill-stealing, I'm securing the bounty."];
+                const pykeSkins = [
+                    { name: 'Ashen Knight', path: 'media/splash/Ashen_Knight_Pyke_Splash.png' },
+                    { name: 'Blood Moon', path: 'media/splash/Blood_Moon_Pyke_Splash.png' },
+                    { name: 'Empyrean', path: 'media/splash/Empyrean_Pyke_Splash.png' },
+                    { name: 'Prestige Soul Fighter', path: 'media/splash/Prestige_Soul_Fighter_Pyke_Splash.png' },
+                    { name: 'PROJECT', path: 'media/splash/PROJECT_Pyke_Splash.png' },
+                    { name: 'PsyOps', path: 'media/splash/PsyOps_Pyke_Splash.png' },
+                    { name: 'Sand Wraith', path: 'media/splash/Sand_Wraith_Pyke_Splash.png' },
+                    { name: 'Sentinel', path: 'media/splash/Sentinel_Pyke_Splash.png' },
+                    { name: 'Soul Fighter', path: 'media/splash/Soul_Fighter_Pyke_Splash.png' }
+                ];
+                const quotes = ["Climbing to Diamond... From Masters.", "Getting flamed for sending P Y K E . I N F O link... My bad guys", "Wow another document I go run you down! >:)", "L9L9L9L9L9L9L9L9L9L9", "PYKE NOT MID CHAMP!", "PYKE NOT TOP CHAMP!", "PYKE NOT ADC CHAMP!", "JUNGLE PYKE PSYCHOSIS", "Sinking in the Elo ocean... Cold down there", "You're on the list."];
                 const guideData = {
                     MID_TOP: { play: "As a top laner, try to freeze the wave under your tower or crash it if the enemy is low, creating roaming opportunities for your Pyke mid. Always communicate enemy summoner spell usage, especially Flash, and in teamfights, focus on setting up enemies to be executable for Pyke's ultimate.", why: "A mid lane Pyke provides exceptional roaming pressure and powerful resets during teamfights, and he can effectively follow up on your engages to secure kills.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
                     ADC_TOP: { play: "Your primary goal in the early game is to play safe and avoid unnecessary deaths. Once Pyke hits level 6, he becomes a teamfight-carrying threat, which is your cue to group up. Always ping enemy Flashes and play around Pyke's ultimate by getting targets into execute range.", why: "Pyke ADC offers devastating resets in teamfights and can reliably follow your engages. He provides a more resilient ADC option that doesn't easily die before level 6.", picks: ["Jax", "Shen", "Kennen", "Malphite", "Warwick"] },
@@ -242,18 +274,75 @@
                 let selectedPykeRole = '';
                 let selectedUserRole = '';
                 let activeEyeSides = { left: false, right: false };
+                let areErrorBoxesEnabled = true;
+                let errorInterval;
+                let errorFrequency = 10000;
 
-                // --- CORE LOGIC & FUNCTIONS ---
+                const loadingMessages = ["Sinking from Grandmaster to Diamond 4...", "Missing yet another hook...", "Alt-tabbing at the worst possible time..."];
+                document.getElementById("loading-text").textContent = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+                
+                backgroundMusic.volume = 0.15;
 
                 const startMusic = () => { if (!hasInteracted) { backgroundMusic.play().then(() => { hasInteracted = true; pauseButton.innerHTML = '<i class="fas fa-pause"></i>'; }).catch(e => console.error("Music could not be started.", e)); } };
-                const loadSong = (index, shouldPlay) => { const song = playlist[index]; backgroundMusic.src = song.src; currentSongInfo.textContent = song.name; backgroundMusic.load(); if (shouldPlay) { backgroundMusic.play().then(() => pauseButton.innerHTML = '<i class="fas fa-pause"></i>').catch(() => pauseButton.innerHTML = '<i class="fas fa-play"></i>'); } else { pauseButton.innerHTML = '<i class="fas fa-play"></i>'; } };
-                const playNextSong = () => { currentSongIndex = (currentSongIndex + 1) % playlist.length; loadSong(currentSongIndex, true); };
-                const playPreviousSong = () => { currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length; loadSong(currentSongIndex, true); };
+                
+                const formatTime = (seconds) => {
+                    const min = Math.floor(seconds / 60);
+                    const sec = Math.floor(seconds % 60);
+                    return isNaN(min) || isNaN(sec) ? "0:00" : `${min}:${sec < 10 ? '0' : ''}${sec}`;
+                };
+
+                const updateProgress = () => {
+                    const { currentTime, duration } = backgroundMusic;
+                    songProgressSlider.value = currentTime || 0;
+                    songProgressSlider.max = duration || 0;
+                    currentTimeDisplay.textContent = formatTime(currentTime);
+                    totalDurationDisplay.textContent = formatTime(duration);
+                };
+
+                const updatePlaylistHighlight = () => {
+                    playlistContainer.querySelectorAll('li').forEach((item, index) => item.classList.toggle('active', index === currentSongIndex));
+                };
+
+                const loadSong = (index, shouldPlay = false) => {
+                    currentSongIndex = index;
+                    const song = playlist[index];
+                    backgroundMusic.src = song.src;
+                    currentSongInfo.textContent = song.name;
+                    updatePlaylistHighlight();
+                    if (shouldPlay) {
+                        backgroundMusic.play().then(() => pauseButton.innerHTML = '<i class="fas fa-pause"></i>');
+                    } else {
+                        pauseButton.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                };
+                
+                const playNextSong = () => loadSong((currentSongIndex + 1) % playlist.length, true);
+                const playPreviousSong = () => loadSong((currentSongIndex - 1 + playlist.length) % playlist.length, true);
+                
+                playlist.forEach((song, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = song.name;
+                    li.dataset.index = index;
+                    li.addEventListener('click', () => loadSong(index, true));
+                    playlistContainer.appendChild(li);
+                });
+
+                pykeSkins.forEach(skin => {
+                    const thumb = document.createElement('img');
+                    thumb.src = skin.path;
+                    thumb.alt = skin.name;
+                    thumb.className = 'splash-thumb';
+                    thumb.addEventListener('click', () => {
+                        guideContent.style.backgroundImage = `url('${skin.path}')`;
+                        document.querySelectorAll('.splash-thumb').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    });
+                    splashSelector.appendChild(thumb);
+                });
+                
                 const populateSentences = (text, container) => { container.innerHTML = ''; text.split('.').filter(s => s.trim().length > 0).forEach(sentence => { const p = document.createElement('p'); p.textContent = sentence.trim() + '.'; container.appendChild(p); }); };
                 const setRandomQuote = () => { if(headerQuote) headerQuote.textContent = quotes[Math.floor(Math.random() * quotes.length)]; };
                 
-                // --- PAGE INITIALIZATION ---
-
                 setTimeout(() => {
                     loadingScreen.style.opacity = 0;
                     setTimeout(() => {
@@ -263,18 +352,16 @@
                         pykeRoleScreen.style.display = 'flex';
                         document.body.classList.remove('loading-active');
                         document.body.classList.add('role-select-active');
-                        loadSong(currentSongIndex, false);
+                        loadSong(0, false);
                     }, 500);
                 }, 2000);
-
-                // --- ATMOSPHERIC & ANIMATION EFFECTS ---
 
                 const animateTitle = () => { const titleText = " P Y K E . I N F O "; const icons = ['🔪', '🩸', '💀', '🌊']; let textIndex = 0; let iconIndex = 0; setInterval(() => { const part1 = titleText.substring(textIndex); const part2 = titleText.substring(0, textIndex); document.title = icons[iconIndex] + part2 + part1; textIndex = (textIndex - 1 + titleText.length) % titleText.length; if(textIndex === titleText.length - 1) iconIndex = (iconIndex + 1) % icons.length; }, 400); };
                 animateTitle();
 
                 const bubblesContainer = document.getElementById('bubbles-container');
                 for (let i = 0; i < 40; i++) { const b = document.createElement('div'); b.className = 'bubble'; b.style.left = `${Math.random()*100}vw`; b.style.animationDuration = `${Math.random()*8+6}s`; b.style.animationDelay = `${Math.random()*10}s`; const s = Math.random()*20+5; b.style.width = `${s}px`; b.style.height = `${s}px`; b.style.opacity = Math.random()*.7+.2; bubblesContainer.appendChild(b); }
-
+                
                 const eyesContainer = document.getElementById('eyes-container');
                 const eyeColors = ['#000000', '#1a0000', '#2b0000', '#3d0000', '#500000'];
                 function createEye() {
@@ -293,25 +380,35 @@
                 }
                 setInterval(createEye, 2000);
 
-                const fishContainer = document.getElementById('ghost-fish-container');
-                function createGhostFish() {
+                const deepSeaFishContainer = document.getElementById('deep-sea-fish-container');
+                const fishImages = ['https://storage.googleapis.com/gemini-web-resources/pyke-guide/fish1.png', 'https://storage.googleapis.com/gemini-web-resources/pyke-guide/fish2.png'];
+                function createDeepSeaFish() {
                     if (!document.body.classList.contains('guide-active')) return;
                     const fish = document.createElement('div');
-                    fish.className = 'ghost-fish';
+                    fish.className = 'deep-sea-fish';
+                    fish.style.backgroundImage = `url('${fishImages[Math.floor(Math.random() * fishImages.length)]}')`;
+                    
                     const side = Math.random() > 0.5 ? 'left' : 'right';
                     fish.style.top = `${Math.random() * 80 + 10}vh`;
-                    fish.style.setProperty('--duration', `${Math.random() * 10 + 15}s`);
-                    if(side === 'left') { fish.style.left = '-200px'; fish.style.animationName = 'swim-right'; }
-                    else { fish.style.right = '-200px'; fish.style.animationName = 'swim-left'; }
-                    fishContainer.appendChild(fish);
-                    setTimeout(() => fish.remove(), 25000);
+                    fish.style.width = `${Math.random() * 100 + 150}px`;
+                    fish.style.animationDuration = `${Math.random() * 20 + 25}s`;
+
+                    if(side === 'left') {
+                        fish.style.animationName = 'swim-right';
+                        fish.style.left = '-250px';
+                    } else {
+                        fish.style.animationName = 'swim-left';
+                        fish.style.right = '-250px';
+                    }
+                    deepSeaFishContainer.appendChild(fish);
+                    setTimeout(() => fish.remove(), parseInt(fish.style.animationDuration) * 1000);
                 }
-                setInterval(createGhostFish, 8000);
+                setInterval(createDeepSeaFish, 12000);
 
                 const errorPopupsContainer = document.getElementById('error-popups-container');
-                const errorMessages = [ { q: "LP gain seems a bit low. Recalibrate?", b1: "Yes", b2: "No" }, { q: "Enemy jungler spotted. Blame your own jungler?", b1: "Instantly", b2: "Later" }, { q: "Teammate died. Type 'ff 15' in chat?", b1: "Of course", b2: "Not yet" }, { q: "Wanna buy some elo?", b1: "Yes", b2: "No" }, { q: "Is your team going to win or lose?", b1: "Win", b2: "Lose" }, { q: "Objective spawning. Time to recall?", b1: "Perfect", b2: "Maybe not" }, { q: "You have been demoted to Iron IV. Accept?", b1: "Accept", b2: "Deny" }, { q: "Mid laner is 0/5. Send them a friend request?", b1: "Why not?", b2: "Block" }, { q: "A 'Teamfighting' tutorial is available. View now?", b1: "Skip", b2: "Skip" }, { q: "Connection to Ranked queue lost. Try ARAM?", b1: "Yes", b2: "No" }, { q: "Your bot lane is 0/8. Send gank?", b1: "Mute All", b2: "OK" }, { q: "Enemy has Baron. Time to split push?", b1: "Yes", b2: "Yes" }, { q: "New patch notes available. Read them?", b1: "In game", b2: "Never" }, { q: "You have been honored. Was it sarcasm?", b1: "Probably", b2: "Definitely" }, { q: "Enemy team has 3 smurfs. Surrender vote failed 1/4. Try again?", b1: "Yes", b2: "OK" }, { q: "Your support is roaming. Hug tower?", b1: "Engage 1v2", b2: "OK" }, { q: "Toxicity detected. Enable chat filter?", b1: "No", b2: "Disable" }, { q: "You missed smite. Report jungler?", b1: "Yes", b2: "Also Yes" }, { q: "Yasuo hit 0/10 power spike. Worry?", b1: "A little", b2: "A lot" }, { q: "Server is lagging. Was it your fault?", b1: "Yes", b2: "Blame Riot" }, { q: "A teammate pinged 'Enemy Missing'. Ignore?", b1: "Yes", b2: "Of course" }, { q: "Update client to v14.22? Your mods may break.", b1: "Later", b2: "Remind me next year" }, { q: "Your IP address has been leaked in chat. Change it?", b1: "Too late", b2: "OK" }, { q: "Enemy ADC is fed. Focus the support?", b1: "Logical", b2: "OK" }, { q: "You are autofilled. Dodge?", b1: "My wallet says no", b2: "OK" }, { q: "Low on mana. Use all abilities on wave?", b1: "Yes", b2: "Absolutely" }, { q: "Your team is all AD. Do you need magic damage?", b1: "What's that?", b2: "No" }, { q: "Player 'xX_DragonSlayer_Xx' has joined your lobby.", b1: "Dodge", b2: "Pray" }, { q: "You have 7 Control Wards in your inventory. Place one?", b1: "No", b2: "They're for style" }, { q: "The enemy has an open inhibitor. Take Baron instead?", b1: "Big brain", b2: "Yes" }, { q: "Your premade is feeding. Unfriend them?", b1: "After this game", b2: "OK" }, { q: "Enemy picked Teemo. Uninstall?", b1: "Yes", b2: "Proceed" }, { q: "Failed to connect to voice chat. A blessing?", b1: "Yes", b2: "Indeed" }, { q: "A Poro requires a snack. Feed it?", b1: "Always", b2: "Feed" }, { q: "You have been chat restricted for 10 games. Type 'gg ez'?", b1: "Bind it", b2: "OK" }, { q: "This is a promotional series to Diamond. Is your internet stable?", b1: "No", b2: "Let's find out" }, { q: "Your ADC has Cleanse. Will they use it?", b1: "No", b2: "For movement speed" }, { q: "A 5-man gank is heading bot. Is it warded?", b1: "What's a ward?", b2: "No" }, { q: "Match found. Are you ready to lose 25 LP?", b1: "Accept", b2: "Accept" }, { q: "The client has crashed. A sign to touch grass?", b1: "Invalid option", b2: "Ignore" } ];
+                const errorMessages = [ { q: "LP gain seems a bit low. Recalibrate?", b1: "Yes", b2: "No" }];
                 function createErrorBox() {
-                    if (!document.body.classList.contains('guide-active')) return;
+                    if (!document.body.classList.contains('guide-active') || !areErrorBoxesEnabled) return;
                     const errorData = errorMessages[Math.floor(Math.random()*errorMessages.length)];
                     const errorBox = document.createElement('div'); errorBox.className = 'error-box';
                     errorBox.innerHTML = `<div class="error-title-bar"><span>Error</span><button class="error-close-btn">×</button></div><div class="error-content"><div class="error-icon">!</div><p>${errorData.q}</p></div><div class="error-buttons"><button>${errorData.b1}</button><button>${errorData.b2}</button></div>`;
@@ -322,21 +419,45 @@
                     const closeError = () => { errorBox.style.opacity = '0'; setTimeout(() => errorBox.remove(), 300); };
                     errorBox.querySelectorAll('button').forEach(btn => btn.addEventListener('click', closeError));
                 }
-                setInterval(createErrorBox, (Math.random()*5000)+10000);
+                
+                function startErrorInterval() {
+                    if (errorInterval) clearInterval(errorInterval);
+                    errorInterval = setInterval(createErrorBox, errorFrequency);
+                }
+                startErrorInterval();
 
-                // --- EVENT LISTENERS ---
-
-                backgroundMusic.volume = 0.15;
-                volumeSlider.value = 0.15;
+                backgroundMusic.addEventListener('loadedmetadata', updateProgress);
+                backgroundMusic.addEventListener('timeupdate', updateProgress);
                 backgroundMusic.addEventListener('ended', playNextSong);
-                volumeSlider.addEventListener('input', () => { backgroundMusic.volume = volumeSlider.value; });
+                songProgressSlider.addEventListener('input', (e) => backgroundMusic.currentTime = e.target.value);
+                volumeSlider.addEventListener('input', (e) => { backgroundMusic.volume = e.target.value; });
                 prevButton.addEventListener('click', playPreviousSong);
                 nextButton.addEventListener('click', playNextSong);
                 pauseButton.addEventListener('click', (event) => { event.stopPropagation(); if (!hasInteracted) { startMusic(); return; } if (backgroundMusic.paused) { backgroundMusic.play(); pauseButton.innerHTML = '<i class="fas fa-pause"></i>'; } else { backgroundMusic.pause(); pauseButton.innerHTML = '<i class="fas fa-play"></i>'; } });
-                toggleMusicControlsButton.addEventListener('click', () => { infoBox.classList.add('info-box-collapsed'); feedbackBox.classList.add('feedback-box-collapsed'); musicControls.classList.toggle('music-controls-collapsed'); });
-                toggleInfoButton.addEventListener('click', () => { musicControls.classList.add('music-controls-collapsed'); feedbackBox.classList.add('feedback-box-collapsed'); infoBox.classList.toggle('info-box-collapsed'); });
-                toggleFeedbackButton.addEventListener('click', () => { musicControls.classList.add('music-controls-collapsed'); infoBox.classList.add('info-box-collapsed'); feedbackBox.classList.toggle('feedback-box-collapsed'); });
+
+                const closeAllPanels = () => {
+                    infoBox.classList.add('info-box-collapsed');
+                    musicControls.classList.add('music-controls-collapsed');
+                    feedbackBox.classList.add('feedback-box-collapsed');
+                    settingsBox.classList.add('settings-box-collapsed');
+                };
+                
+                toggleMusicControlsButton.addEventListener('click', () => { const isCollapsed = musicControls.classList.contains('music-controls-collapsed'); closeAllPanels(); if (isCollapsed) musicControls.classList.remove('music-controls-collapsed'); });
+                toggleInfoButton.addEventListener('click', () => { const isCollapsed = infoBox.classList.contains('info-box-collapsed'); closeAllPanels(); if (isCollapsed) infoBox.classList.remove('info-box-collapsed'); });
+                toggleFeedbackButton.addEventListener('click', () => { const isCollapsed = feedbackBox.classList.contains('feedback-box-collapsed'); closeAllPanels(); if (isCollapsed) feedbackBox.classList.remove('feedback-box-collapsed'); });
+                toggleSettingsButton.addEventListener('click', () => { const isCollapsed = settingsBox.classList.contains('settings-box-collapsed'); closeAllPanels(); if (isCollapsed) settingsBox.classList.remove('settings-box-collapsed'); });
                 closeFeedbackBtn.addEventListener('click', () => feedbackBox.classList.add('feedback-box-collapsed'));
+                
+                fontToggle.addEventListener('change', (e) => document.body.classList.toggle('no-custom-fonts', !e.target.checked));
+                errorToggle.addEventListener('change', (e) => areErrorBoxesEnabled = e.target.checked);
+                errorFreqSlider.addEventListener('input', (e) => {
+                    errorFrequency = parseInt(e.target.value) * 1000;
+                    errorFreqValue.textContent = e.target.value;
+                    startErrorInterval();
+                });
+                clearErrorsBtn.addEventListener('click', () => {
+                    errorPopupsContainer.innerHTML = '';
+                });
 
                 backToRoleSelectionButton.addEventListener('click', () => {
                     document.body.classList.remove('guide-active');
@@ -346,7 +467,7 @@
                     mainFooter.style.display = 'none';
                     selectionContainer.style.display = 'block';
                     userRoleScreen.style.opacity = 0;
-                    userRoleScreen.style.display = 'none';
+                    setTimeout(() => userRoleScreen.style.display = 'none', 500);
                     pykeRoleScreen.style.display = 'flex';
                     pykeRoleScreen.style.opacity = 1;
                 });
@@ -370,8 +491,9 @@
                         const data = guideData[key];
                         if (data) {
                             setRandomQuote();
-                            const randomSkinUrl = pykeSkins[Math.floor(Math.random()*pykeSkins.length)].replace(/\/revision\/.*/, '');
-                            guideContent.style.backgroundImage = `url('${randomSkinUrl}')`;
+                            const randomSkin = pykeSkins[Math.floor(Math.random()*pykeSkins.length)];
+                            guideContent.style.backgroundImage = `url('${randomSkin.path}')`;
+                            document.querySelectorAll('.splash-thumb').forEach(thumb => thumb.classList.toggle('active', thumb.src.includes(randomSkin.path)));
                             howToPlayTitle.textContent = `How to play with ${selectedPykeRole} Pyke as ${selectedUserRole}`;
                             populateSentences(data.play, howToPlayTextContainer);
                             whyGoodTitle.textContent = `Why ${selectedPykeRole} Pyke is good with ${selectedUserRole}`;
